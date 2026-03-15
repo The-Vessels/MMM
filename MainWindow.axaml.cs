@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Runtime.CompilerServices;
 using Avalonia.Controls;
 using Avalonia.Media;
@@ -10,6 +11,9 @@ public partial class MainWindow : Window
     // DateTime? lastTitleBarClick = null;
     // const int MAX_DOUBLECLICK_MS = 20;
 
+    // TODO should we make this more generic?
+    TestView testView;
+    BlackView blackView;
 
     void ToggleMaximize()
     {
@@ -46,5 +50,12 @@ public partial class MainWindow : Window
         {
             Console.WriteLine(TitleBar.Bounds);
         };
+
+        testView = new();
+        blackView = new();
+
+        ViewContainer.Child = testView;
+        HomeButton.Click     += (_, _) => ViewContainer.Child = testView;
+        DiscoverButton.Click += (_, _) => ViewContainer.Child = blackView;
     }
 }

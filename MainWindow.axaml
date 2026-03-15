@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mmm"
         mc:Ignorable="d"
         x:Class="mmm.MainWindow"
         ExtendClientAreaToDecorationsHint="True"
@@ -107,10 +108,10 @@
                 </Border>
                 <Border Grid.Row="1" Grid.Column="0" x:Name="Sidebar" Classes="Sidebar" BorderBrush="#b5e61d" BorderThickness="0, 0, 2, 0">
                     <Grid x:Name="SidebarButtons" RowDefinitions="auto, 10, auto, 10, auto, 10, auto, *, auto">
-                        <Button Classes="SidebarButton" Grid.Row="0">
+                        <Button Classes="SidebarButton" Grid.Row="0" x:Name="HomeButton">
                             <Image Source="Assets/mntl_home.png" RenderOptions.BitmapInterpolationMode="None"></Image>
                         </Button>
-                        <Button Classes="SidebarButton" Grid.Row="2">
+                        <Button Classes="SidebarButton" Grid.Row="2" x:Name="DiscoverButton">
                             <Image Source="Assets/mntl_discover.png" RenderOptions.BitmapInterpolationMode="None"></Image>
                         </Button>
                         <Button Classes="SidebarButton" Grid.Row="4">
@@ -124,7 +125,12 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" Background="#FF0000">
+                <Border Grid.Row="1" Grid.Column="1" Background="#FF0000" x:Name="ViewContainer">
+                    <!-- <local:TestView /> -->
+                    <!-- <UserControl>
+                        <Border Background="#0000FF">
+                        </Border>
+                    </UserControl> -->
                 </Border>
             </Grid>
         </Border>

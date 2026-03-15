@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="mmm.TestView">
+    <!-- <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel>
+    <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel> -->
+    <Border Background="#0000FF">
+    </Border>
+</UserControl>
