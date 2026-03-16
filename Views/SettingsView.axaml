@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="mmm.SettingsView">
+    <!-- <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel>
+    <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel> -->
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Appearance">
+            <Border Background="#111111">
+                <TextBlock>fuuuuuuuuuuuuuuu</TextBlock>
+            </Border>
+        </TabItem>
+        <TabItem Header="Privacy">
+            <Border Background="#111111">
+                <TextBlock>ffffffffffffffffffffff</TextBlock>
+            </Border>
+        </TabItem>
+        <TabItem Header="Credits">
+            <Border Background="#111111">
+                <StackPanel>
+                    <TextBlock>KrisGra</TextBlock>
+                    <TextBlock>TooManyUsers "AnciAncientStraits" HaveThisUsername</TextBlock>
+                </StackPanel>
+            </Border>
+        </TabItem>
+    </TabControl>
+</UserControl>

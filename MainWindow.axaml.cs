@@ -12,8 +12,10 @@ public partial class MainWindow : Window
     // const int MAX_DOUBLECLICK_MS = 20;
 
     // TODO should we make this more generic?
-    TestView testView;
-    BlackView blackView;
+    HomeView homeView;
+    DiscoverView discoverView;
+    LibrarbyView librarbyView;
+    SettingsView settingsView;
 
     void ToggleMaximize()
     {
@@ -51,11 +53,15 @@ public partial class MainWindow : Window
             Console.WriteLine(TitleBar.Bounds);
         };
 
-        testView = new();
-        blackView = new();
+        homeView = new();
+        discoverView = new();
+        librarbyView = new();
+        settingsView = new();
 
-        ViewContainer.Child = testView;
-        HomeButton.Click     += (_, _) => ViewContainer.Child = testView;
-        DiscoverButton.Click += (_, _) => ViewContainer.Child = blackView;
+        ViewContainer.Child = homeView;
+        HomeButton.Click += (_, _) => ViewContainer.Child = homeView;
+        DiscoverButton.Click += (_, _) => ViewContainer.Child = discoverView;
+        LibrarbyButton.Click += (_, _) => ViewContainer.Child = librarbyView;
+        SettingsButton.Click += (_, _) => ViewContainer.Child = settingsView;
     }
 }

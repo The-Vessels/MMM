@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace mmm;
 
-public partial class BlackView : UserControl
+public partial class DiscoverView : UserControl
 {
-    public BlackView()
+    public DiscoverView()
     {
         InitializeComponent();
     }

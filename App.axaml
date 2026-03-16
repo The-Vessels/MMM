@@ -6,5 +6,29 @@
 
     <Application.Styles>
         <SimpleTheme />
+        <Style Selector="TabControl[TabStripPlacement=Left]">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style Selector="TabControl[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style Selector="TabItem > Border">
+            <Setter Property="BorderThickness" Value="2, 0, 0, 0"/>
+            <Setter Property="BorderBrush" Value="#b5e61d"/>
+        </Style>
+        <Style Selector="TabItem">
+            <Setter Property="CornerRadius" Value="2"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#80815ac7"/>
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#80815ac7"/>
+        </Style>
+        <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#60b5e61d"/>
+        </Style>
     </Application.Styles>
 </Application>

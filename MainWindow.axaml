@@ -48,17 +48,14 @@
         </Style>
         <!-- SIDEBAR BUTTON STUFF IS HEEEEEEEEEEEERRRRRREEEEEEEEEEEEEEEE-->
         <Style Selector="Border.Sidebar">
+            <Setter Property="Width" Value="70" />
             <Setter Property="Padding" Value="0, 10, 0, 10" />
             <Setter Property="Background" Value="rgb(0, 0, 0)" />
-            <Setter Property="BoxShadow" Value="0 0 0 #b5e61d" />
             <Setter Property="Transitions">
                 <Transitions>
                     <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.9" Easing="0.16, 1.0, 0.3, 1.0"/>
                 </Transitions>
             </Setter>
-        </Style>
-        <Style Selector="Border.Sidebar:pointerover">
-            <Setter Property="BoxShadow" Value="0 0 15 #b5e61d" />
         </Style>
         <Style Selector="Button.SidebarButton">
             <Setter Property="Background" Value="#00000000" />
@@ -88,7 +85,7 @@
 
     <Grid>
         <Border x:Name="WindowBorder" ZIndex="999" BorderBrush="#815ac7" BorderThickness="2">
-            <Grid RowDefinitions="45, *" ColumnDefinitions="70, *">
+            <Grid RowDefinitions="45, *" ColumnDefinitions="auto, *">
                 <Border BorderBrush="#815ac7" Background="#000000" BorderThickness="0, 0, 0, 2" Grid.Row="0" Grid.ColumnSpan="2" x:Name="TitleBar">
                     <Grid ColumnDefinitions="18, 15, 5, 60, *, 45, 45, 45">
                         <Image Source="Assets/mntl_icon.png" RenderOptions.BitmapInterpolationMode="None" Grid.Column="1" Width="30" Height="30"/>
@@ -114,18 +111,18 @@
                         <Button Classes="SidebarButton" Grid.Row="2" x:Name="DiscoverButton">
                             <Image Source="Assets/mntl_discover.png" RenderOptions.BitmapInterpolationMode="None"></Image>
                         </Button>
-                        <Button Classes="SidebarButton" Grid.Row="4">
+                        <Button Classes="SidebarButton" Grid.Row="4" x:Name="LibrarbyButton">
                             <Image Source="Assets/mntl_librarby.png" RenderOptions.BitmapInterpolationMode="None"></Image>
                         </Button>
                         <Border BorderBrush="#b5e61d" BorderThickness="1" Grid.Row="6">
                         </Border>
-                        <Button Classes="SidebarButton" Grid.Row="8">
+                        <Button Classes="SidebarButton" Grid.Row="8" x:Name="SettingsButton">
                             <Image Source="Assets/mntl_settings.png" RenderOptions.BitmapInterpolationMode="None"></Image>
                         </Button>
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" Background="#FF0000" x:Name="ViewContainer">
+                <Border Grid.Row="1" Grid.Column="1" x:Name="ViewContainer">
                     <!-- <local:TestView /> -->
                     <!-- <UserControl>
                         <Border Background="#0000FF">
