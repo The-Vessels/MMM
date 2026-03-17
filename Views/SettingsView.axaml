@@ -1,30 +1,62 @@
 <UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="mmm.SettingsView">
+        x:Class="mmm.SettingsView"
+        x:Name= "SettingsView">
     <!-- <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel>
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
-    <TabControl TabStripPlacement="Left">
-        <TabItem Header="Appearance">
-            <Border Background="#111111">
-                <TextBlock>fuuuuuuuuuuuuuuu</TextBlock>
-            </Border>
-        </TabItem>
-        <TabItem Header="Privacy">
-            <Border Background="#111111">
-                <TextBlock>ffffffffffffffffffffff</TextBlock>
-            </Border>
-        </TabItem>
-        <TabItem Header="Credits">
-            <Border Background="#111111">
-                <StackPanel>
-                    <TextBlock>KrisGra</TextBlock>
-                    <TextBlock>TooManyUsers "AnciAncientStraits" HaveThisUsername</TextBlock>
-                </StackPanel>
-            </Border>
-        </TabItem>
-    </TabControl>
+    <UserControl.Styles>
+        <Style Selector="ToggleButton">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width"  Value="50" />
+            <Setter Property="CornerRadius" Value="50"></Setter>
+        </Style>
+    </UserControl.Styles>
+    <Panel>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Appearance">
+                <Border Background="#000">
+                    <ScrollViewer Padding="10">
+                        <StackPanel Spacing="20">
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="17"><Bold>Use system decorations</Bold> <Italic>(restart required)</Italic></TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">Use system provided window decorations rather than custom MMM decorations (Like the titlebar)</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" x:Name="SystemDecoToggle">
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to putpenispenispenispenispenispenis</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                </ToggleButton>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </TabItem>
+            <TabItem Header="Privacy">
+                <Border Background="#111111">
+                    <TextBox AcceptsReturn="True" Text="{Binding Description}">ffffffffffffffffffffff</TextBox>
+                </Border>
+            </TabItem>
+            <TabItem Header="Credits">
+                <Border Background="#111111">
+                    <StackPanel>
+                        <TextBlock>KrisGra</TextBlock>
+                        <TextBlock>TooManyUsers "AnciAncientStraits" HaveThisUsername</TextBlock>
+                    </StackPanel>
+                </Border>
+            </TabItem>
+        </TabControl>
+        <TextBlock VerticalAlignment="Bottom" Margin="10, 0, 0, 10">MMM alpha v0.1</TextBlock>
+    </Panel>
 </UserControl>

@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Runtime.CompilerServices;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
@@ -10,6 +11,7 @@ public partial class MainWindow : Window
 {
     // DateTime? lastTitleBarClick = null;
     // const int MAX_DOUBLECLICK_MS = 20;
+    private readonly SettingsService _settings;
 
     // TODO should we make this more generic?
     HomeView homeView;
@@ -32,6 +34,20 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        _settings = new SettingsService();
+        var s = _settings.Load();
+        if (s.UseSystemDeco)
+        {
+            SystemDecorations = SystemDecorations.Full;
+            TitleBar.IsVisible = false;
+            Grid.SetRowSpan(Sidebar, 2);
+            Grid.SetRow(Sidebar, 0);
+            Grid.SetRowSpan(ViewContainer, 2);
+            Grid.SetRow(ViewContainer, 0);
+            Grid.SetRowSpan(WindowBgColor, 2);
+            Grid.SetRow(WindowBgColor, 0);
+            WindowBorder.BorderThickness = Thickness.Parse("2, 0, 2, 2");
+        }
 
         Width = Screens.All[0].Bounds.Width * 0.65;
         Height = Screens.All[0].Bounds.Height * 0.75;
@@ -59,9 +75,37 @@ public partial class MainWindow : Window
         settingsView = new();
 
         ViewContainer.Child = homeView;
-        HomeButton.Click += (_, _) => ViewContainer.Child = homeView;
-        DiscoverButton.Click += (_, _) => ViewContainer.Child = discoverView;
-        LibrarbyButton.Click += (_, _) => ViewContainer.Child = librarbyView;
-        SettingsButton.Click += (_, _) => ViewContainer.Child = settingsView;
+        HomeButton.Click += (_, _) =>
+        {
+            ViewContainer.Child = homeView;
+            HomeButton.Classes.Add("Highlighted");
+            DiscoverButton.Classes.Remove("Highlighted");
+            LibrarbyButton.Classes.Remove("Highlighted");
+            SettingsButton.Classes.Remove("Highlighted");
+        };
+        DiscoverButton.Click += (_, _) =>
+        {
+            ViewContainer.Child = discoverView;
+            HomeButton.Classes.Remove("Highlighted");
+            DiscoverButton.Classes.Add("Highlighted");
+            LibrarbyButton.Classes.Remove("Highlighted");
+            SettingsButton.Classes.Remove("Highlighted");
+        };
+        LibrarbyButton.Click += (_, _) =>
+        {
+            ViewContainer.Child = librarbyView;
+            HomeButton.Classes.Remove("Highlighted");
+            DiscoverButton.Classes.Remove("Highlighted");
+            LibrarbyButton.Classes.Add("Highlighted");
+            SettingsButton.Classes.Remove("Highlighted");
+        };
+        SettingsButton.Click += (_, _) =>
+        {
+            ViewContainer.Child = settingsView;
+            HomeButton.Classes.Remove("Highlighted");
+            DiscoverButton.Classes.Remove("Highlighted");
+            LibrarbyButton.Classes.Remove("Highlighted");
+            SettingsButton.Classes.Add("Highlighted");
+        };
     }
 }

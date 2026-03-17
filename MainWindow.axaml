@@ -81,6 +81,10 @@
             <!-- <Setter Property="RenderTransform" Value="scale(1.2)" /> -->
             <Setter Property="Background" Value="#60b5e61d" />
         </Style>
+        <Style Selector="Button.Highlighted">
+            <!-- <Setter Property="RenderTransform" Value="scale(1.2)" /> -->
+            <Setter Property="Background" Value="#60b5e61d" />
+        </Style>
     </Window.Styles>
 
     <Grid>
@@ -101,7 +105,7 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border Background="#000000" ZIndex="-1" Grid.Row="1" Grid.ColumnSpan="2">
+                <Border x:Name="WindowBgColor" Background="#000000" ZIndex="-1" Grid.Row="1" Grid.ColumnSpan="2">
                 </Border>
                 <Border Grid.Row="1" Grid.Column="0" x:Name="Sidebar" Classes="Sidebar" BorderBrush="#b5e61d" BorderThickness="0, 0, 2, 0">
                     <Grid x:Name="SidebarButtons" RowDefinitions="auto, 10, auto, 10, auto, 10, auto, *, auto">
