@@ -47,15 +47,15 @@
             <Setter Property="IsVisible" Value="False"/>
         </Style>
     </UserControl.Styles>
-    <Panel>
+    <Grid>
         <TabControl TabStripPlacement="Left">
             <TabItem Header="Appearance">
                 <Border Background="#000">
-                    <ScrollViewer Padding="10">
-                        <StackPanel Spacing="20">
+                    <ScrollViewer>
+                        <StackPanel Spacing="30" Margin="30, 20, 30, 20">
                             <!-- TODO: MAKE THIS A CUSTOM CONTROL FOR GODS SAKE -->
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="17"><Bold>Use system decorations</Bold> <Italic>(restart required)</Italic></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="17" TextWrapping="Wrap"><Bold>Use system decorations</Bold> <Italic>(restart required)</Italic></TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">Use system provided window decorations rather than custom MMM decorations (Like the titlebar)</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" x:Name="SystemDecoToggle">
                                     <Panel>
@@ -65,7 +65,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -75,7 +75,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -85,7 +85,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -95,7 +95,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -105,7 +105,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -115,7 +115,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -125,7 +125,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -135,7 +135,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -145,7 +145,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -155,7 +155,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -165,7 +165,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -175,27 +175,7 @@
                                 </ToggleButton>
                             </Grid>
                             <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
-                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-                                    <Panel>
-                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
-                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
-                                    </Panel>
-                                </ToggleButton>
-                            </Grid>
-                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
-                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-                                    <Panel>
-                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
-                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
-                                    </Panel>
-                                </ToggleButton>
-                            </Grid>
-                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
                                     <Panel>
@@ -223,5 +203,5 @@
             </TabItem>
         </TabControl>
         <TextBlock VerticalAlignment="Bottom" Margin="10, 0, 0, 10">MMM alpha v0.1</TextBlock>
-    </Panel>
+    </Grid>
 </UserControl>
