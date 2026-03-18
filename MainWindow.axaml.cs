@@ -46,11 +46,11 @@ public partial class MainWindow : Window
             Grid.SetRow(ViewContainer, 0);
             Grid.SetRowSpan(WindowBgColor, 2);
             Grid.SetRow(WindowBgColor, 0);
-            WindowBorder.BorderThickness = Thickness.Parse("2, 0, 2, 2");
+            WindowBorder.BorderThickness = Thickness.Parse("0");
         }
 
-        Width = Screens.All[0].Bounds.Width * 0.65;
-        Height = Screens.All[0].Bounds.Height * 0.75;
+        Width = Screens.All[0].Bounds.Width * 0.6;
+        Height = Screens.All[0].Bounds.Height * 0.7;
 
         TitleBar.PointerPressed += (sender, args) =>
         {
