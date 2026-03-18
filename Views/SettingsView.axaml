@@ -1,7 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="mmm.SettingsView"
-        x:Name= "SettingsView">
+        x:Class="mmm.SettingsView">
     <!-- <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel>
@@ -10,9 +9,42 @@
     </StackPanel> -->
     <UserControl.Styles>
         <Style Selector="ToggleButton">
-            <Setter Property="Height" Value="25" />
-            <Setter Property="Width"  Value="50" />
-            <Setter Property="CornerRadius" Value="50"></Setter>
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width"  Value="60" />
+            <Setter Property="Background" Value="#00000000" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+        </Style>
+        <Style Selector="ToggleButton:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#00000000" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#00000000" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+        </Style>
+        <Style Selector="ToggleButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#00000000" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+        </Style>
+        <Style Selector="ToggleButton Image">
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Width"  Value="60" />
+        </Style>
+        <Style Selector="ToggleButton Image.enabled">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        <Style Selector="ToggleButton:checked Image.enabled">
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+        <Style Selector="ToggleButton Image.disabled">
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+        <Style Selector="ToggleButton:checked Image.disabled">
+            <Setter Property="IsVisible" Value="False"/>
         </Style>
     </UserControl.Styles>
     <Panel>
@@ -21,22 +53,155 @@
                 <Border Background="#000">
                     <ScrollViewer Padding="10">
                         <StackPanel Spacing="20">
-                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
+                            <!-- TODO: MAKE THIS A CUSTOM CONTROL FOR GODS SAKE -->
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
                                 <TextBlock Grid.Row="0" Grid.Column="0" FontSize="17"><Bold>Use system decorations</Bold> <Italic>(restart required)</Italic></TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">Use system provided window decorations rather than custom MMM decorations (Like the titlebar)</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" x:Name="SystemDecoToggle">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
                                 </ToggleButton>
                             </Grid>
-                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to putpenispenispenispenispenispenis</TextBlock>
-                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-                                </ToggleButton>
-                            </Grid>
-                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 50" RowSpacing="5" ColumnSpacing="5">
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
                                 <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
                                 <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
+                                </ToggleButton>
+                            </Grid>
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, 60" RowSpacing="5" ColumnSpacing="5">
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="17">Placeholder</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="15" TextWrapping="Wrap">This is a, placeholder description, it is used to fill a section with text for testing purposes when there's no other text to put</TextBlock>
+                                <ToggleButton Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Panel>
+                                        <Image Classes="disabled" Source="../Assets/mntl_toggle.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                        <Image Classes="enabled" Source="../Assets/mntl_toggle_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                    </Panel>
                                 </ToggleButton>
                             </Grid>
                         </StackPanel>
