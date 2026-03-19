@@ -18,8 +18,10 @@
             <Setter Property="BorderBrush" Value="#b5e61d"/>
         </Style>
         <Style Selector="TabItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="CornerRadius" Value="2"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Padding" Value="20, 10, 20, 10"/>
         </Style>
         <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="#80815ac7"/>
@@ -46,4 +48,8 @@
             <Setter Property="Fill" Value="#815ac7"/>
         </Style>
     </Application.Styles>
+    <Application.Resources>
+        <FontFamily x:Key="MainFont">avares://mmm/Assets/Fonts#Main</FontFamily>
+        <FontFamily x:Key="8BitFont">avares://mmm/Assets/Fonts#AdventureBoard</FontFamily>
+    </Application.Resources>
 </Application>
