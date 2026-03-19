@@ -75,9 +75,11 @@ public partial class MainWindow : Window
         settingsView = new();
 
         ViewContainer.Child = homeView;
+        Title = "Home - MantleModManager";
         HomeButton.Click += (_, _) =>
         {
             ViewContainer.Child = homeView;
+            Title = "Home - MantleModManager";
             HomeButton.Classes.Add("Highlighted");
             DiscoverButton.Classes.Remove("Highlighted");
             LibrarbyButton.Classes.Remove("Highlighted");
@@ -86,6 +88,7 @@ public partial class MainWindow : Window
         DiscoverButton.Click += (_, _) =>
         {
             ViewContainer.Child = discoverView;
+            Title = "Discover - MantleModManager";
             HomeButton.Classes.Remove("Highlighted");
             DiscoverButton.Classes.Add("Highlighted");
             LibrarbyButton.Classes.Remove("Highlighted");
@@ -94,6 +97,7 @@ public partial class MainWindow : Window
         LibrarbyButton.Click += (_, _) =>
         {
             ViewContainer.Child = librarbyView;
+            Title = "Librarby - MantleModManager";
             HomeButton.Classes.Remove("Highlighted");
             DiscoverButton.Classes.Remove("Highlighted");
             LibrarbyButton.Classes.Add("Highlighted");
@@ -102,6 +106,7 @@ public partial class MainWindow : Window
         SettingsButton.Click += (_, _) =>
         {
             ViewContainer.Child = settingsView;
+            Title = "Settings - MantleModManager";
             HomeButton.Classes.Remove("Highlighted");
             DiscoverButton.Classes.Remove("Highlighted");
             LibrarbyButton.Classes.Remove("Highlighted");
