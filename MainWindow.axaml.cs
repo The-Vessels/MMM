@@ -76,6 +76,7 @@ public partial class MainWindow : Window
 
         ViewContainer.Child = homeView;
         Title = "Home - MantleModManager";
+        HomeButton.Classes.Add("Highlighted");
         HomeButton.Click += (_, _) =>
         {
             ViewContainer.Child = homeView;

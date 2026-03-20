@@ -85,6 +85,26 @@
             <!-- <Setter Property="RenderTransform" Value="scale(1.2)" /> -->
             <Setter Property="Background" Value="#60b5e61d" />
         </Style>
+        <Style Selector="Button Image.enabled">
+            <Setter Property="Width"  Value="40" />
+            <Setter Property="Height"  Value="40" />
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        <Style Selector="Button.Highlighted Image.enabled">
+            <Setter Property="Width"  Value="40" />
+            <Setter Property="Height"  Value="40" />
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+        <Style Selector="Button Image.disabled">
+            <Setter Property="Width"  Value="40" />
+            <Setter Property="Height"  Value="40" />
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+        <Style Selector="Button.Highlighted Image.disabled">
+            <Setter Property="Width"  Value="40" />
+            <Setter Property="Height"  Value="40" />
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
     </Window.Styles>
 
     <Grid>
@@ -110,18 +130,30 @@
                 <Border Grid.Row="1" Grid.Column="0" x:Name="Sidebar" Classes="Sidebar" BorderBrush="#b5e61d" BorderThickness="0, 0, 2, 0">
                     <Grid x:Name="SidebarButtons" RowDefinitions="auto, 10, auto, 10, auto, 10, auto, *, auto">
                         <Button Classes="SidebarButton" Grid.Row="0" x:Name="HomeButton">
-                            <Image Source="Assets/mntl_home.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            <Panel>
+                                <Image Classes="disabled" Source="Assets/mntl_home.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                <Image Classes="enabled" Source="Assets/mntl_home_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            </Panel>
                         </Button>
                         <Button Classes="SidebarButton" Grid.Row="2" x:Name="DiscoverButton">
-                            <Image Source="Assets/mntl_discover.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            <Panel>
+                                <Image Classes="disabled" Source="Assets/mntl_discover.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                <Image Classes="enabled" Source="Assets/mntl_discover_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            </Panel>
                         </Button>
                         <Button Classes="SidebarButton" Grid.Row="4" x:Name="LibrarbyButton">
-                            <Image Source="Assets/mntl_librarby.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            <Panel>
+                                <Image Classes="disabled" Source="Assets/mntl_librarby.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                <Image Classes="enabled" Source="Assets/mntl_librarby_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            </Panel>
                         </Button>
                         <Border BorderBrush="#b5e61d" BorderThickness="1" Grid.Row="6">
                         </Border>
                         <Button Classes="SidebarButton" Grid.Row="8" x:Name="SettingsButton">
-                            <Image Source="Assets/mntl_settings.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            <Panel>
+                                <Image Classes="disabled" Source="Assets/mntl_settings.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                                <Image Classes="enabled" Source="Assets/mntl_settings_active.png" RenderOptions.BitmapInterpolationMode="None"></Image>
+                            </Panel>
                         </Button>
                     </Grid>
                 </Border>
