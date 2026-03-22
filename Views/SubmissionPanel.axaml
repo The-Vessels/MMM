@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="mmm.SubmissionPanel">
+    <!-- <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel>
+    <StackPanel>
+        <TextBlock Text="Welcome to TestView!" />
+    </StackPanel> -->
+    <Border Background="#008000">
+      <StackPanel>
+        <TextBlock Text="{Binding Name}" />
+        <TextBlock Text="{Binding ModelName}" />
+        <TextBlock Text="{Binding Submitter.Name}" />
+        <StackPanel x:Name="SubmissionTags">
+        </StackPanel>
+      </StackPanel>
+    </Border>
+</UserControl>
