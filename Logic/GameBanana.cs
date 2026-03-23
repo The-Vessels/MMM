@@ -137,24 +137,33 @@ class GameBanana
     return $"{image.BaseUrl}/{image.File}";
   }
 
-  public static string GetSmallestSubmissionImageUrl(Image image)
+  public static string GetSubmissionImageUrlByImageSize(Image image, ImageSizes imageSize = ImageSizes.SizeBase)
   {
-    if (image.File100 != null)
+    if (image.File100 != null && imageSize == ImageSizes.Size100)
     {
       return $"{image.BaseUrl}/{image.File100}";
     }
-    if (image.File220 != null)
+    if (image.File220 != null && imageSize == ImageSizes.Size220)
     {
       return $"{image.BaseUrl}/{image.File220}";
     }
-    if (image.File530 != null)
+    if (image.File530 != null && imageSize == ImageSizes.Size530)
     {
       return $"{image.BaseUrl}/{image.File530}";
     }
-    if (image.File800 != null)
+    if (image.File800 != null && imageSize == ImageSizes.Size800)
     {
       return $"{image.BaseUrl}/{image.File800}";
     }
     return $"{image.BaseUrl}/{image.File}";
+  }
+
+  public enum ImageSizes
+  {
+    SizeBase,
+    Size100,
+    Size220,
+    Size530,
+    Size800
   }
 }

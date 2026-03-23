@@ -7,20 +7,36 @@
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
-    <Border Background="#40815ac7">
+    <Border BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2" Padding="20">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <GradientStop Color="#000000" Offset="0.2"/>
+          <GradientStop Color="#20815ac7" Offset="1.0"/>
+        </LinearGradientBrush>
+      </Border.Background>
       <Grid ColumnDefinitions="auto, auto">
-        <StackPanel Grid.Column="0" Spacing="5">
-          <Image x:Name="SubmissionThumbnail" Width="150" />
-          <TextBlock Text="{Binding Name}" />
-          <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
-          <StackPanel x:Name="SubmissionTags">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Spacing="10">
+          <Border x:Name="SubmissionThumbnail" Width="160" Height="90" BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2">
+            <Border.Background>
+              <ImageBrush Source="../Assets/mntl_logo.png"
+                          Stretch="UniformToFill"
+                          AlignmentX="Center"
+                          AlignmentY="Top" />
+            </Border.Background>
+            <!-- <Image x:Name="SubmissionThumbnail" Stretch="UniformToFill" /> -->
+          </Border>
+          <StackPanel Spacing="5">
+            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
+            <StackPanel Orientation="Horizontal" Spacing="5">
+              <TextBlock Text="{Binding LikeCount, StringFormat='{}{0} Likes'}" />
+              <TextBlock Text="{Binding ViewCount, StringFormat='{}{0} Views'}" />
+              <TextBlock Text="{Binding PostCount, StringFormat='{}{0} Posts'}" />
+            </StackPanel>
+            <TextBlock Text="{Binding ModelName}" />
+            <StackPanel x:Name="SubmissionTags">
+            </StackPanel>
           </StackPanel>
-          <StackPanel Orientation="Horizontal" Spacing="5">
-            <TextBlock Text="{Binding LikeCount, StringFormat='{}{0} Likes'}" />
-            <TextBlock Text="{Binding ViewCount, StringFormat='{}{0} Views'}" />
-            <TextBlock Text="{Binding PostCount, StringFormat='{}{0} Posts'}" />
-          </StackPanel>
-          <TextBlock Text="{Binding ModelName}" />
         </StackPanel>
       </Grid>
     </Border>

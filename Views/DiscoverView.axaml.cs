@@ -33,10 +33,16 @@ public partial class DiscoverView : UserControl
                 SubmissionPanel.SubmissionTags.Children.Add(tagBlock);
             }
 
-            var ThumbnailUrl = new Uri(GameBanana.GetSmallestSubmissionImageUrl(record.PreviewMedia.Images[0]));
+            var ThumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
             var ThumbnailBitmap = await ImageHelper.LoadFromWeb(ThumbnailUrl);
 
-            SubmissionPanel.SubmissionThumbnail.Source = ThumbnailBitmap;
+            SubmissionPanel.SubmissionThumbnail.Background = new ImageBrush
+            {
+                Source = ThumbnailBitmap,
+                Stretch = Stretch.UniformToFill,
+                AlignmentX = AlignmentX.Center,
+                AlignmentY = AlignmentY.Top
+            };
 
             if (record.HasFiles)
             {
