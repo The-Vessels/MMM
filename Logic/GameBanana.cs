@@ -60,6 +60,15 @@ public class Record
 
   [JsonPropertyName("_aSubmitter")]
   public required Submitter Submitter { get; set; }
+
+  [JsonPropertyName("_nLikeCount")]
+  public int LikeCount { get; set; }
+
+  [JsonPropertyName("_nPostCount")]
+  public int PostCount { get; set; }
+
+  [JsonPropertyName("_nViewCount")]
+  public int ViewCount { get; set; }
 }
 
 public class PreviewMedia

@@ -12,10 +12,15 @@
         <StackPanel Grid.Column="0" Spacing="5">
           <Image x:Name="SubmissionThumbnail" Width="150" />
           <TextBlock Text="{Binding Name}" />
-          <TextBlock Text="{Binding ModelName}" />
           <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
           <StackPanel x:Name="SubmissionTags">
           </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="{Binding LikeCount, StringFormat='{}{0} Likes'}" />
+            <TextBlock Text="{Binding ViewCount, StringFormat='{}{0} Views'}" />
+            <TextBlock Text="{Binding PostCount, StringFormat='{}{0} Posts'}" />
+          </StackPanel>
+          <TextBlock Text="{Binding ModelName}" />
         </StackPanel>
       </Grid>
     </Border>
