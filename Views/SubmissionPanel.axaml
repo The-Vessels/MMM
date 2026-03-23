@@ -28,10 +28,19 @@
           <StackPanel Spacing="5">
             <TextBlock Text="{Binding Name}" />
             <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
-            <StackPanel Orientation="Horizontal" Spacing="5">
-              <TextBlock Text="{Binding LikeCount, StringFormat='{}{0} Likes'}" />
-              <TextBlock Text="{Binding ViewCount, StringFormat='{}{0} Views'}" />
-              <TextBlock Text="{Binding PostCount, StringFormat='{}{0} Posts'}" />
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <StackPanel Orientation="Horizontal" Spacing="5">
+                <Image Source="../Assets/mntl_likes.png"/>
+                <TextBlock Text="{Binding LikeCount}" VerticalAlignment="Center" />
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Spacing="2">
+                <Image Source="../Assets/mntl_views.png"/>
+                <TextBlock Text="{Binding ViewCount}" VerticalAlignment="Center" />
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Spacing="2">
+                <Image Source="../Assets/mntl_posts.png"/>
+                <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
+              </StackPanel>
             </StackPanel>
             <TextBlock Text="{Binding ModelName}" />
             <StackPanel x:Name="SubmissionTags">
