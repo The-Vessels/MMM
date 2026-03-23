@@ -15,10 +15,10 @@ namespace mmm;
 public class SubmissionItem
 {
   [JsonPropertyName("_aMetadata")]
-  public required Metadata aMetadata { get; set; }
+  public required Metadata Metadata { get; set; }
 
   [JsonPropertyName("_aRecords")]
-  public required List<Record> aRecords { get; set; }
+  public required List<Record> Records { get; set; }
 }
 public class Metadata
 {
@@ -55,8 +55,41 @@ public class Record
   [JsonPropertyName("_aTags")]
   public List<string>? Tags { get; set; }
 
+  [JsonPropertyName("_aPreviewMedia")]
+  public PreviewMedia? PreviewMedia { get; set; }
+
   [JsonPropertyName("_aSubmitter")]
   public required Submitter Submitter { get; set; }
+}
+
+public class PreviewMedia
+{
+  [JsonPropertyName("_aImages")]
+  public List<Image>? Images { get; set; }
+}
+
+public class Image
+{
+  [JsonPropertyName("_sType")]
+  public required string Images { get; set; }
+
+  [JsonPropertyName("_sBaseUrl")]
+  public required string BaseUrl { get; set; }
+
+  [JsonPropertyName("_sFile")]
+  public required string File { get; set; }
+
+  [JsonPropertyName("_sFile100")]
+  public string? File100 { get; set; }
+
+  [JsonPropertyName("_sFile220")]
+  public string? File220 { get; set; }
+
+  [JsonPropertyName("_sFile530")]
+  public string? File530 { get; set; }
+
+  [JsonPropertyName("_sFile800")]
+  public string? File800 { get; set; }
 }
 
 public class Submitter
@@ -83,8 +116,36 @@ class GameBanana
   {
       using HttpResponseMessage response = await httpClient.GetAsync("apiv11/Util/List/Featured?_idGameRow=6755&_sModelName=Mod");
       
+      response.EnsureSuccessStatusCode();
+
       var jsonResponse = await response.Content.ReadFromJsonAsync<SubmissionItem>();
       /* Console.WriteLine($"{jsonResponse.GetProperty("_aRecords")}\n"); */
       return jsonResponse;
+  }
+
+  public static string GetSubmissionImageUrl(Image image)
+  {
+    return $"{image.BaseUrl}/{image.File}";
+  }
+
+  public static string GetSmallestSubmissionImageUrl(Image image)
+  {
+    if (image.File100 != null)
+    {
+      return $"{image.BaseUrl}/{image.File100}";
+    }
+    if (image.File220 != null)
+    {
+      return $"{image.BaseUrl}/{image.File220}";
+    }
+    if (image.File530 != null)
+    {
+      return $"{image.BaseUrl}/{image.File530}";
+    }
+    if (image.File800 != null)
+    {
+      return $"{image.BaseUrl}/{image.File800}";
+    }
+    return $"{image.BaseUrl}/{image.File}";
   }
 }

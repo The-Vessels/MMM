@@ -7,13 +7,16 @@
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
-    <Border Background="#008000">
-      <StackPanel>
-        <TextBlock Text="{Binding Name}" />
-        <TextBlock Text="{Binding ModelName}" />
-        <TextBlock Text="{Binding Submitter.Name}" />
-        <StackPanel x:Name="SubmissionTags">
+    <Border Background="#40815ac7">
+      <Grid ColumnDefinitions="auto, auto">
+        <StackPanel Grid.Column="0" Spacing="5">
+          <Image x:Name="SubmissionThumbnail" Width="150" />
+          <TextBlock Text="{Binding Name}" />
+          <TextBlock Text="{Binding ModelName}" />
+          <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
+          <StackPanel x:Name="SubmissionTags">
+          </StackPanel>
         </StackPanel>
-      </StackPanel>
+      </Grid>
     </Border>
 </UserControl>

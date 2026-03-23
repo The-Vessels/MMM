@@ -3,6 +3,8 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using HarfBuzzSharp;
 
 namespace mmm;
@@ -18,7 +20,8 @@ public partial class DiscoverView : UserControl
     private async Task LoadFeaturedAsync()
     {
         SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions(GameBanana.client);
-        foreach (Record record in jsonResponse.aRecords)
+        //TODO: MAKE THIS FLIPPING PARALLEL FLIIIIIIIIIIIPPPPPPPP
+        foreach (Record record in jsonResponse.Records)
         {
             var SubmissionPanel = new SubmissionPanel();
             SubmissionPanel.DataContext = record;
@@ -30,7 +33,10 @@ public partial class DiscoverView : UserControl
                 SubmissionPanel.SubmissionTags.Children.Add(tagBlock);
             }
 
-            /* Console.WriteLine($"hi {record}\n"); */
+            var ThumbnailUrl = new Uri(GameBanana.GetSmallestSubmissionImageUrl(record.PreviewMedia.Images[0]));
+            var ThumbnailBitmap = await ImageHelper.LoadFromWeb(ThumbnailUrl);
+
+            SubmissionPanel.SubmissionThumbnail.Source = ThumbnailBitmap;
 
             if (record.HasFiles)
             {
