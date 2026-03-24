@@ -10,7 +10,7 @@
     <Border x:Name="PanelRoot">
       <Grid>
         <Border
-          x:Name="PanelBackgroundBoarder" ZIndex="1"
+          x:Name="PanelBackgroundBorder" ZIndex="1"
           Width ="{Binding Bounds.Width,  ElementName=PanelContent}"
           Height="{Binding Bounds.Height, ElementName=PanelContent}"
         >

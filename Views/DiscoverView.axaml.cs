@@ -50,6 +50,8 @@ public partial class DiscoverView : UserControl
             SubmissionsContainer.Children.Add(submissionPanel);
         }
 
+        // This is so that image-downloading can be done asynchronously
+        // (this makes all the images get downloaded at the same time)
         Dispatcher.UIThread.Post(async () => await AddSubmissionPanelImage(submissionPanel, thumbnailUrl));
     }
 
