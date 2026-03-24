@@ -16,7 +16,7 @@
         >
           <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill">
             <Image.Effect>
-              <BlurEffect Radius="100" />
+              <BlurEffect Radius="75" />
             </Image.Effect>
           </Image>
         </Border>
@@ -27,7 +27,7 @@
         >
           <Border.Background>
             <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-              <GradientStop Color="#000000" Offset="0.2"/>
+              <GradientStop Color="#000000" Offset="0.25"/>
               <GradientStop Color="#20815ac7" Offset="1.0"/>
             </LinearGradientBrush>
           </Border.Background>

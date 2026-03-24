@@ -49,8 +49,11 @@ public partial class MainWindow : Window
             WindowBorder.BorderThickness = Thickness.Parse("0");
         }
 
-        Width = Screens.All[0].Bounds.Width * 0.6;
-        Height = Screens.All[0].Bounds.Height * 0.7;
+        /* Width = Screens.All[0].Bounds.Width * 0.6;
+        Height = Screens.All[0].Bounds.Height * 0.7; */
+
+        Width = 640 * 1.75;
+        Height = 480 * 1.5;
 
         TitleBar.PointerPressed += (sender, args) =>
         {
