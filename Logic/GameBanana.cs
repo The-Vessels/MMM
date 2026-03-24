@@ -61,6 +61,18 @@ public class Record
   [JsonPropertyName("_aSubmitter")]
   public required Submitter Submitter { get; set; }
 
+  [JsonPropertyName("_akDevelopmentState")]
+  public string? DevelopmentStateAbbr { get; set; }
+
+  [JsonPropertyName("_sDevelopmentState")]
+  public string? DevelopmentState { get; set; }
+
+  [JsonPropertyName("_iCompletionPercentage")]
+  public int? CompletionPercentage { get; set; }
+
+  [JsonPropertyName("_tsDateUpdated")]
+  public long DateUpdated { get; set; }
+
   [JsonPropertyName("_nLikeCount")]
   public int LikeCount { get; set; }
 

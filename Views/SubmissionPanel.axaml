@@ -7,6 +7,12 @@
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
+    <UserControl.Styles>
+      <Style Selector="ProgressBar:horizontal /template/ LayoutTransformControl#PART_LayoutTransformControl > TextBlock">
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+      </Style>  
+    </UserControl.Styles>
     <Border x:Name="PanelRoot">
       <Grid>
         <Border
@@ -43,8 +49,10 @@
                 <!-- <Image x:Name="SubmissionThumbnail" Stretch="UniformToFill" /> -->
               </Border>
               <StackPanel Spacing="5">
-                <TextBlock Text="{Binding Name}" />
-                <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" />
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                  <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                  <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="10">
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_likes.png"/>
@@ -59,9 +67,28 @@
                     <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
                   </StackPanel>
                 </StackPanel>
-                <TextBlock Text="{Binding ModelName}" />
-                <StackPanel x:Name="SubmissionTags">
+                <!-- <TextBlock Text="{Binding ModelName}" /> -->
+                <StackPanel x:Name="ProgressStats" Spacing="2" IsVisible="False">
+                  <TextBlock Text="{Binding DevelopmentState}" />
+                  <ProgressBar  Height="10" Width="160" HorizontalAlignment="Left"
+                  Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
+                  Foreground="#b5e61d"
+                  Background="#815ac7"
+                  CornerRadius="2"
+                  ShowProgressText="True"/>
                 </StackPanel>
+                <ItemsControl ItemsSource="{Binding Tags}" x:Name="SubmissionTags" IsVisible="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
               </StackPanel>
             </StackPanel>
           </Grid>
