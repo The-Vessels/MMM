@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
@@ -39,6 +40,24 @@ public partial class DiscoverView : UserControl
             Stretch = Stretch.UniformToFill,
             AlignmentX = AlignmentX.Center,
             AlignmentY = AlignmentY.Top
+        };
+
+        //TODO: why no blur?
+        var ThumbnailBackgroundImage = new Image
+        {
+            Source = ThumbnailBitmap,
+            Effect = new BlurEffect
+            {
+                Radius = 1000
+            }
+        };
+
+        SubmissionPanel.PanelBackgroundImage.Background = new VisualBrush
+        {
+            Visual = ThumbnailBackgroundImage,
+            Stretch = Stretch.UniformToFill,
+            AlignmentX = AlignmentX.Center,
+            AlignmentY = AlignmentY.Center
         };
 
         if (record.HasFiles)

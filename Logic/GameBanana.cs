@@ -74,10 +74,10 @@ public class Record
 public class PreviewMedia
 {
   [JsonPropertyName("_aImages")]
-  public List<Image>? Images { get; set; }
+  public List<GBImage>? Images { get; set; }
 }
 
-public class Image
+public class GBImage
 {
   [JsonPropertyName("_sType")]
   public required string Images { get; set; }
@@ -132,12 +132,12 @@ class GameBanana
       return jsonResponse;
   }
 
-  public static string GetSubmissionImageUrl(Image image)
+  public static string GetSubmissionImageUrl(GBImage image)
   {
     return $"{image.BaseUrl}/{image.File}";
   }
 
-  public static string GetSubmissionImageUrlByImageSize(Image image, ImageSizes imageSize = ImageSizes.SizeBase)
+  public static string GetSubmissionImageUrlByImageSize(GBImage image, ImageSizes imageSize = ImageSizes.SizeBase)
   {
     if (image.File100 != null && imageSize == ImageSizes.Size100)
     {
