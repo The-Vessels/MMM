@@ -1,13 +1,10 @@
 using System;
-using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
-using HarfBuzzSharp;
 
 namespace mmm;
 
@@ -19,51 +16,41 @@ public partial class DiscoverView : UserControl
         _ = LoadFeaturedAsync();
     }
 
-    private async Task AddSubmissionPanel(Record record)
+    private async Task AddSubmissionPanelImage(SubmissionPanel submissionPanel, Uri thumbnailUrl)
     {
-        var SubmissionPanel = new SubmissionPanel();
-        SubmissionPanel.DataContext = record;
+        var thumbnailBitmap = await ImageHelper.LoadFromWeb(thumbnailUrl);
 
-        foreach (string tag in record.Tags)
-        {   
-            var tagBlock = new TextBlock();
-            tagBlock.Text = tag;
-            SubmissionPanel.SubmissionTags.Children.Add(tagBlock);
-        }
-
-        var ThumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
-        var ThumbnailBitmap = await ImageHelper.LoadFromWeb(ThumbnailUrl);
-
-        SubmissionPanel.SubmissionThumbnail.Background = new ImageBrush
+        submissionPanel.SubmissionThumbnail.Background = new ImageBrush
         {
-            Source = ThumbnailBitmap,
+            Source = thumbnailBitmap,
             Stretch = Stretch.UniformToFill,
             AlignmentX = AlignmentX.Center,
             AlignmentY = AlignmentY.Top
         };
 
-        //TODO: why no blur?
-        var ThumbnailBackgroundImage = new Image
-        {
-            Source = ThumbnailBitmap,
-            Effect = new BlurEffect
-            {
-                Radius = 1000
-            }
-        };
+        submissionPanel.PanelBackgroundImage.Source = thumbnailBitmap;
+    }
 
-        SubmissionPanel.PanelBackgroundImage.Background = new VisualBrush
-        {
-            Visual = ThumbnailBackgroundImage,
-            Stretch = Stretch.UniformToFill,
-            AlignmentX = AlignmentX.Center,
-            AlignmentY = AlignmentY.Center
-        };
+    private async Task AddSubmissionPanel(Record record)
+    {
+        var submissionPanel = new SubmissionPanel();
+        submissionPanel.DataContext = record;
+
+        foreach (string tag in record.Tags)
+        {   
+            var tagBlock = new TextBlock();
+            tagBlock.Text = tag;
+            submissionPanel.SubmissionTags.Children.Add(tagBlock);
+        }
+
+        var thumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
 
         if (record.HasFiles)
         {
-            SubmissionsContainer.Children.Add(SubmissionPanel);
+            SubmissionsContainer.Children.Add(submissionPanel);
         }
+
+        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelImage(submissionPanel, thumbnailUrl));
     }
 
     private async Task LoadFeaturedAsync()
@@ -71,7 +58,8 @@ public partial class DiscoverView : UserControl
         SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions(GameBanana.client);
         foreach (Record record in jsonResponse.Records)
         {
-            Dispatcher.UIThread.Post(async () => await AddSubmissionPanel(record));
+            // Dispatcher.UIThread.Post(async () => await AddSubmissionPanel(record));
+            await AddSubmissionPanel(record);
         }
     }
 }
