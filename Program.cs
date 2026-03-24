@@ -8,9 +8,9 @@ class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        if (args.Length >= 1 && args[0] == "--test-steam")
+        if (args.Length >= 1 && args[0] == "--test-utmt")
         {
-            Steam.Download();
+            UTMTTest.Test("TestData/deltarune-ch4-mac.win");
         }
         else AvaloniaMain(args);
     }

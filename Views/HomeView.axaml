@@ -8,5 +8,9 @@
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
     <Border Background="#0000FF">
+        <StackPanel>
+            <Button x:Name="UsefulButton">Useful Button</Button>
+            <Button>Useless Button</Button>
+        </StackPanel>
     </Border>
 </UserControl>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
@@ -17,6 +17,10 @@
       <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
+
+    <!--These directives ensure that only Underanalyzer and UndertaleModLib are compiled into the app.-->
+    <Compile Remove="External/UndertaleModTool/**" />
+    <ProjectReference Include="External/UndertaleModTool/UndertaleModLib/UndertaleModLib.csproj" />
 
     <AvaloniaResource Include="Assets/**" />
   </ItemGroup>

@@ -1,0 +1,4 @@
+[submodule "UndertaleModTool"]
+	path = External/UndertaleModTool
+	url = https://github.com/UnderminersTeam/UndertaleModTool
+	branch = stable-0.8
