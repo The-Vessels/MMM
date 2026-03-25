@@ -8,9 +8,16 @@ class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        if (args.Length >= 1 && args[0] == "--test-utmt")
+        if (args.Length >= 1)
         {
-            UTMTTest.Test("TestData/deltarune-ch4-mac.win");
+            if (args[0] == "--test-utmt")
+            {
+                UTMTTest.Test("TestData/deltarune-ch4-mac.win");
+            }
+            else if (args[0] == "--test-xdelta")
+            {
+                XDeltaTest.Test();
+            }
         }
         else AvaloniaMain(args);
     }

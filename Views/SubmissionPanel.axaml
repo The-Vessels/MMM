@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mmm="clr-namespace:mmm"
         x:Class="mmm.SubmissionPanel">
     <!-- <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
@@ -70,12 +71,13 @@
                 <!-- <TextBlock Text="{Binding ModelName}" /> -->
                 <StackPanel x:Name="ProgressStats" Spacing="2" IsVisible="False">
                   <TextBlock Text="{Binding DevelopmentState}" />
-                  <ProgressBar  Height="10" Width="160" HorizontalAlignment="Left"
-                  Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
-                  Foreground="#b5e61d"
-                  Background="#815ac7"
-                  CornerRadius="2"
-                  ShowProgressText="True"/>
+                  <mmm:BetterProgressBar Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
+                    Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
+                    Foreground="#b5e61d"
+                    Background="#815ac7"
+                    CornerRadius="2"
+                    ShowProgressText="False"
+                  />
                 </StackPanel>
                 <ItemsControl ItemsSource="{Binding Tags}" x:Name="SubmissionTags" IsVisible="False">
                     <ItemsControl.ItemsPanel>

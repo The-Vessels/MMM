@@ -1,6 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:mmm"
+        xmlns:mmm="clr-namespace:mmm"
         x:Class="mmm.HomeView">
     <!-- <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
@@ -12,11 +12,11 @@
         <StackPanel>
             <Button x:Name="UsefulButton">Useful Button</Button>
             <Button>Useless Button</Button>
-            <local:GoofyText Width="300" Height="100" FontFamily="{StaticResource MainFont}">
-                <local:GoofyText.BorderPen>
+            <mmm:BetterProgressBar Width="300" Height="100" FontFamily="{StaticResource MainFont}">
+                <!-- <mmm:BetterProgressBar.BorderPen>
                     <Pen Brush="White" LineJoin="Miter" Thickness="3" />
-                </local:GoofyText.BorderPen>
-            </local:GoofyText>
+                </mmm:BetterProgressBar.BorderPen> -->
+            </mmm:BetterProgressBar>
         </StackPanel>
     </Border>
 </UserControl>

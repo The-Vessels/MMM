@@ -20,6 +20,7 @@
 
     <!--These directives ensure that only Underanalyzer and UndertaleModLib are compiled into the app.-->
     <Compile Remove="External/UndertaleModTool/**" />
+    <PackageReference Include="PleOps.XdeltaSharp" Version="1.3.0" />
     <ProjectReference Include="External/UndertaleModTool/UndertaleModLib/UndertaleModLib.csproj" />
 
     <AvaloniaResource Include="Assets/**" />
