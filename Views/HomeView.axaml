@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:mmm"
         x:Class="mmm.HomeView">
     <!-- <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
@@ -7,10 +8,15 @@
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
-    <Border Background="#0000FF">
+    <Border Background="#000000">
         <StackPanel>
             <Button x:Name="UsefulButton">Useful Button</Button>
             <Button>Useless Button</Button>
+            <local:GoofyText Width="300" Height="100" FontFamily="{StaticResource MainFont}">
+                <local:GoofyText.BorderPen>
+                    <Pen Brush="White" LineJoin="Miter" Thickness="3" />
+                </local:GoofyText.BorderPen>
+            </local:GoofyText>
         </StackPanel>
     </Border>
 </UserControl>
