@@ -38,7 +38,7 @@ public class Record
   public int Row { get; set; }
 
   [JsonPropertyName("_sModelName")]
-  public required string ModelName { get; set; }
+  public string? ModelName { get; set; }
 
   [JsonPropertyName("_sName")]
   public required string Name { get; set; }
@@ -52,8 +52,9 @@ public class Record
   [JsonPropertyName("_bHasFiles")]
   public bool HasFiles { get; set; }
 
-  [JsonPropertyName("_aTags")]
-  public List<string>? Tags { get; set; }
+  //tags are structured differently on different endpoints so im quitting tags no one uses them anyway
+  /* [JsonPropertyName("_aTags")]
+  public List<string>? Tags { get; set; } */
 
   [JsonPropertyName("_aPreviewMedia")]
   public PreviewMedia? PreviewMedia { get; set; }
@@ -81,6 +82,15 @@ public class Record
 
   [JsonPropertyName("_nViewCount")]
   public int ViewCount { get; set; }
+
+  [JsonPropertyName("_nDownloadCount")]
+  public int DownloadCount { get; set; }
+
+  [JsonPropertyName("_aCategory")]
+  public Category? Category { get; set; }
+
+  [JsonPropertyName("_aSuperCategory")]
+  public SuperCategory? SuperCategory { get; set; }
 }
 
 public class PreviewMedia
@@ -122,6 +132,30 @@ public class Submitter
   public required string Name { get; set; }
 }
 
+public class Category
+{
+  [JsonPropertyName("_idRow")]
+  public int Row { get; set; }
+
+  [JsonPropertyName("_sName")]
+  public required string Name { get; set; }
+
+  [JsonPropertyName("_sModelName")]
+  public required string ModelName { get; set; }
+}
+
+public class SuperCategory
+{
+  [JsonPropertyName("_idRow")]
+  public int Row { get; set; }
+
+  [JsonPropertyName("_sName")]
+  public required string Name { get; set; }
+
+  [JsonPropertyName("_sModelName")]
+  public required string ModelName { get; set; }
+}
+
 class GameBanana
 {
   public static HttpClient client = new()
@@ -133,15 +167,26 @@ class GameBanana
       {"ContentType", "application/json"}
     }
   };
-  public static async Task<SubmissionItem> GetFeaturedSubmissions(HttpClient httpClient)
-  {
-      using HttpResponseMessage response = await httpClient.GetAsync("apiv11/Util/List/Featured?_idGameRow=6755&_sModelName=Mod");
-      
-      response.EnsureSuccessStatusCode();
 
-      var jsonResponse = await response.Content.ReadFromJsonAsync<SubmissionItem>();
-      /* Console.WriteLine($"{jsonResponse.GetProperty("_aRecords")}\n"); */
-      return jsonResponse;
+  public static async Task<Record> GetRecordByModelNameAndRow(string ModelName, int Row)
+  {
+    using HttpResponseMessage response = await client.GetAsync($"apiv11/{ModelName}/{Row}/ProfilePage");
+      
+    response.EnsureSuccessStatusCode();
+
+    var jsonResponse = await response.Content.ReadFromJsonAsync<Record>();
+    
+    return jsonResponse;
+  }
+  public static async Task<SubmissionItem> GetFeaturedSubmissions()
+  {
+    using HttpResponseMessage response = await client.GetAsync("apiv11/Util/List/Featured?_idGameRow=6755&_sModelName=Mod");
+    
+    response.EnsureSuccessStatusCode();
+
+    var jsonResponse = await response.Content.ReadFromJsonAsync<SubmissionItem>();
+    /* Console.WriteLine($"{jsonResponse.GetProperty("_aRecords")}\n"); */
+    return jsonResponse;
   }
 
   public static string GetSubmissionImageUrl(GBImage image)

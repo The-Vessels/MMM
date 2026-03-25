@@ -32,6 +32,25 @@ public partial class DiscoverView : UserControl
         submissionPanel.PanelBackgroundImage.Source = thumbnailBitmap;
     }
 
+    private async Task AddRemainingSubmissionInfo(SubmissionPanel submissionPanel, Record record)
+    {
+        Record remainingData = await GameBanana.GetRecordByModelNameAndRow(record.ModelName, record.Row);
+        submissionPanel.DataContext = remainingData;
+
+        if (remainingData.Category != null)
+        {
+            submissionPanel.Category.IsVisible = true;
+        }
+        if (remainingData.SuperCategory != null)
+        {
+            submissionPanel.SuperCategory.IsVisible = true;
+        }
+        if (submissionPanel.Category.IsVisible || submissionPanel.SuperCategory.IsVisible)
+        {
+            submissionPanel.Categories.IsVisible = true;
+        }
+    }
+
     private async Task AddSubmissionPanel(Record record)
     {
         var submissionPanel = new SubmissionPanel();
@@ -50,10 +69,6 @@ public partial class DiscoverView : UserControl
         {
             submissionPanel.ProgressStats.IsVisible = true;
         }
-        if (record.Tags.Count > 0)
-        {
-            submissionPanel.SubmissionTags.IsVisible = true;
-        }
 
         if (record.HasFiles)
         {
@@ -63,11 +78,14 @@ public partial class DiscoverView : UserControl
         // This is so that image-downloading can be done asynchronously
         // (this makes all the images get downloaded at the same time)
         Dispatcher.UIThread.Post(async () => await AddSubmissionPanelImage(submissionPanel, thumbnailUrl));
+
+        // Haven't found a way to get all the info we need from one API call so uhm we have to do this
+        Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
     }
 
     private async Task LoadFeaturedAsync()
     {
-        SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions(GameBanana.client);
+        SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions();
         foreach (Record record in jsonResponse.Records)
         {
             // Dispatcher.UIThread.Post(async () => await AddSubmissionPanel(record));

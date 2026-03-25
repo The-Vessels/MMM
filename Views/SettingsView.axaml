@@ -46,6 +46,10 @@
         <Style Selector="ToggleButton:checked Image.disabled">
             <Setter Property="IsVisible" Value="False"/>
         </Style>
+        <Style Selector="TabItem > Border">
+            <Setter Property="BorderThickness" Value="2, 0, 0, 0"/>
+            <Setter Property="BorderBrush" Value="#b5e61d"/>
+        </Style>
     </UserControl.Styles>
     <Grid>
         <TabControl TabStripPlacement="Left">

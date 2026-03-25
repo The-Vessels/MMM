@@ -8,12 +8,20 @@
     <StackPanel>
         <TextBlock Text="Welcome to TestView!" />
     </StackPanel> -->
-    <Grid>
-        <Border Background="#000000">
-            <ScrollViewer>
-                <StackPanel x:Name="SubmissionsContainer" Spacing="20" Margin="20">
-                </StackPanel>
-            </ScrollViewer>
-        </Border>
-    </Grid>
+    <UserControl.Styles>
+        <Style Selector="TabItem > Border">
+            <Setter Property="BorderThickness" Value="0, 2, 0, 0"/>
+            <Setter Property="BorderBrush" Value="#b5e61d"/>
+        </Style>
+    </UserControl.Styles>
+    <TabControl>
+        <TabItem Header="Featured">
+            <Border Background="#000000">
+                <ScrollViewer>
+                    <StackPanel x:Name="SubmissionsContainer" Spacing="20" Margin="20">
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </TabItem>
+    </TabControl>
 </UserControl>

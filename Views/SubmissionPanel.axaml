@@ -67,6 +67,10 @@
                     <Image Source="../Assets/mntl_posts.png"/>
                     <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
                   </StackPanel>
+                  <StackPanel Orientation="Horizontal" Spacing="2">
+                    <Image Source="../Assets/mntl_downloads.png"/>
+                    <TextBlock Text="{Binding DownloadCount}" VerticalAlignment="Center" />
+                  </StackPanel>
                 </StackPanel>
                 <!-- <TextBlock Text="{Binding ModelName}" /> -->
                 <StackPanel x:Name="ProgressStats" Spacing="2" IsVisible="False">
@@ -79,7 +83,7 @@
                     ShowProgressText="False"
                   />
                 </StackPanel>
-                <ItemsControl ItemsSource="{Binding Tags}" x:Name="SubmissionTags" IsVisible="False">
+                <!-- <ItemsControl ItemsSource="{Binding Tags}" x:Name="SubmissionTags" IsVisible="False">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal" />
@@ -87,10 +91,20 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" />
+                            <Border CornerRadius="2" BorderThickness="1" BorderBrush="#b5e61d" Padding="2" Background="#000000">
+                              <TextBlock Text="{Binding}" />
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                </ItemsControl> -->
+                <StackPanel x:Name="Categories" Orientation="Horizontal" Spacing="5" IsVisible="False">
+                    <Border x:Name="SuperCategory" CornerRadius="2" BorderThickness="1" BorderBrush="#b5e61d" Padding="5" Background="#000000" IsVisible="False">
+                      <TextBlock Text="{Binding SuperCategory.Name}" />
+                    </Border>
+                    <Border x:Name="Category" CornerRadius="2" BorderThickness="1" BorderBrush="#815ac7" Padding="5" Background="#000000" IsVisible="False">
+                      <TextBlock Text="{Binding Category.Name}" />
+                    </Border>
+                </StackPanel>
               </StackPanel>
             </StackPanel>
           </Grid>
