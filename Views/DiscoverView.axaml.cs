@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -36,14 +37,23 @@ public partial class DiscoverView : UserControl
         var submissionPanel = new SubmissionPanel();
         submissionPanel.DataContext = record;
 
-        foreach (string tag in record.Tags)
+        /* foreach (string tag in record.Tags)
         {   
             var tagBlock = new TextBlock();
             tagBlock.Text = tag;
             submissionPanel.SubmissionTags.Children.Add(tagBlock);
-        }
+        } */
 
         var thumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
+
+        if (record.DevelopmentStateAbbr == "indev" && record.CompletionPercentage < 100)
+        {
+            submissionPanel.ProgressStats.IsVisible = true;
+        }
+        if (record.Tags.Count > 0)
+        {
+            submissionPanel.SubmissionTags.IsVisible = true;
+        }
 
         if (record.HasFiles)
         {
