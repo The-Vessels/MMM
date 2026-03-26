@@ -21,7 +21,7 @@
           Width ="{Binding Bounds.Width,  ElementName=PanelContent}"
           Height="{Binding Bounds.Height, ElementName=PanelContent}"
         >
-          <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill">
+          <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill" Opacity="0.5">
             <Image.Effect>
               <BlurEffect Radius="75" />
             </Image.Effect>
@@ -35,10 +35,11 @@
           <Border.Background>
             <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
               <GradientStop Color="#000000" Offset="0.25"/>
-              <GradientStop Color="#20815ac7" Offset="1.0"/>
+              <GradientStop Color="#30815ac7" Offset="0.75"/>
+              <GradientStop Color="#000000" Offset="1.0"/>
             </LinearGradientBrush>
           </Border.Background>
-          <Grid ColumnDefinitions="auto, auto">
+          <Grid ColumnDefinitions="auto, *">
             <StackPanel Orientation="Horizontal" Grid.Column="0" Spacing="10">
               <Border x:Name="SubmissionThumbnail" Width="160" Height="90" BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2">
                 <Border.Background>
@@ -54,28 +55,10 @@
                   <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
                   <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Spacing="10">
-                  <StackPanel Orientation="Horizontal" Spacing="5">
-                    <Image Source="../Assets/mntl_likes.png"/>
-                    <TextBlock Text="{Binding LikeCount}" VerticalAlignment="Center" />
-                  </StackPanel>
-                  <StackPanel Orientation="Horizontal" Spacing="2">
-                    <Image Source="../Assets/mntl_views.png"/>
-                    <TextBlock Text="{Binding ViewCount}" VerticalAlignment="Center" />
-                  </StackPanel>
-                  <StackPanel Orientation="Horizontal" Spacing="2">
-                    <Image Source="../Assets/mntl_posts.png"/>
-                    <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
-                  </StackPanel>
-                  <StackPanel Orientation="Horizontal" Spacing="2">
-                    <Image Source="../Assets/mntl_downloads.png"/>
-                    <TextBlock Text="{Binding DownloadCount}" VerticalAlignment="Center" />
-                  </StackPanel>
-                </StackPanel>
                 <!-- <TextBlock Text="{Binding ModelName}" /> -->
                 <StackPanel x:Name="ProgressStats" Spacing="2" IsVisible="False">
                   <TextBlock Text="{Binding DevelopmentState}" />
-                  <ProgressBar Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
+                  <ProgressBar MinHeight="0" Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
                     Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
                     Foreground="#b5e61d"
                     Background="#815ac7"
@@ -107,6 +90,30 @@
                 </StackPanel>
               </StackPanel>
             </StackPanel>
+            <Grid Grid.Column="1">
+              <StackPanel Spacing="10" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+                  <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="../Assets/mntl_likes.png"/>
+                    <TextBlock Text="{Binding LikeCount}" VerticalAlignment="Center" />
+                  </StackPanel>
+                  <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="../Assets/mntl_views.png"/>
+                    <TextBlock Text="{Binding ViewCount}" VerticalAlignment="Center" />
+                  </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+                  <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="../Assets/mntl_downloads.png"/>
+                    <TextBlock Text="{Binding DownloadCount}" VerticalAlignment="Center" />
+                  </StackPanel>
+                  <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="../Assets/mntl_posts.png"/>
+                    <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
+                  </StackPanel>
+                </StackPanel>
+              </StackPanel>
+            </Grid>
           </Grid>
         </Border>
       </Grid>
