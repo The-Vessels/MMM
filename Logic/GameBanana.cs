@@ -86,6 +86,9 @@ public class Record
   [JsonPropertyName("_nDownloadCount")]
   public int DownloadCount { get; set; }
 
+  [JsonPropertyName("_sDescription")]
+  public string? Description { get; set; }
+
   [JsonPropertyName("_aCategory")]
   public Category? Category { get; set; }
 

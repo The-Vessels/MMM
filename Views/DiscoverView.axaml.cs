@@ -49,6 +49,11 @@ public partial class DiscoverView : UserControl
         {
             submissionPanel.Categories.IsVisible = true;
         }
+        
+        if (remainingData.Description != null)
+        {
+            submissionPanel.Description.IsVisible = true;
+        }
     }
 
     private async Task AddSubmissionPanel(Record record)

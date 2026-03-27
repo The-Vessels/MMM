@@ -55,6 +55,7 @@
                   <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
                   <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
                 </StackPanel>
+                <TextBlock x:Name="Description" Text="{Binding Description}" FontStyle="Italic" ClipToBounds="False" IsVisible="False"/>
                 <!-- <TextBlock Text="{Binding ModelName}" /> -->
                 <StackPanel x:Name="ProgressStats" Spacing="2" IsVisible="False">
                   <TextBlock Text="{Binding DevelopmentState}" />
