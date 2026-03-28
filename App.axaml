@@ -51,6 +51,12 @@
         <Style Selector="ScrollBar /template/ RepeatButton.repeat > Path">
             <Setter Property="Fill" Value="#815ac7"/>
         </Style>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="MainFont">avares://mmm/Assets/Fonts#Main</FontFamily>

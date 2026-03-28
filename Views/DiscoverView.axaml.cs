@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
@@ -17,7 +18,7 @@ public partial class DiscoverView : UserControl
         _ = LoadFeaturedAsync();
     }
 
-    private async Task AddSubmissionPanelImage(SubmissionPanel submissionPanel, Uri thumbnailUrl)
+    private async Task AddSubmissionPanelThumbnail(SubmissionPanel submissionPanel, Uri thumbnailUrl)
     {
         var thumbnailBitmap = await ImageHelper.LoadFromWeb(thumbnailUrl);
 
@@ -30,6 +31,52 @@ public partial class DiscoverView : UserControl
         };
 
         submissionPanel.PanelBackgroundImage.Source = thumbnailBitmap;
+    }
+
+    private async Task AddSubmissionPanelCarouselImages(SubmissionPanel submissionPanel, PreviewMedia previewMedia)
+    {
+        foreach (GBImage image in previewMedia.Images)
+        {
+            var imageUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(image, GameBanana.ImageSizes.Size530));
+            var imageBitmap = await ImageHelper.LoadFromWeb(imageUrl);
+
+
+            var carouselImage = new Image
+            {
+                Source = imageBitmap
+            };
+
+            var carouselCaption = new TextBlock
+            {
+                IsVisible = false
+            };
+            if (image.Caption != null)
+            {
+                carouselCaption = new TextBlock
+                {
+                    IsVisible = true,
+                    Text = image.Caption,
+                    TextAlignment = TextAlignment.Center,
+                    VerticalAlignment = Avalonia.Layout.VerticalAlignment.Bottom,
+                    Padding = Thickness.Parse("4"),
+                    Background = new SolidColorBrush
+                    {
+                        Color = Color.FromArgb(175, 0, 0, 0)
+                    }
+                };
+            };
+
+            submissionPanel.ImagesCarousel.Items.Add(
+                new Grid
+                {
+                    Children =
+                    {
+                        carouselImage,
+                        carouselCaption
+                    }
+                }
+            );
+        }
     }
 
     private async Task AddRemainingSubmissionInfo(SubmissionPanel submissionPanel, Record record)
@@ -82,10 +129,12 @@ public partial class DiscoverView : UserControl
 
         // This is so that image-downloading can be done asynchronously
         // (this makes all the images get downloaded at the same time)
-        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelImage(submissionPanel, thumbnailUrl));
+        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelThumbnail(submissionPanel, thumbnailUrl));
 
         // Haven't found a way to get all the info we need from one API call so uhm we have to do this
         Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
+
+        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelCarouselImages(submissionPanel, record.PreviewMedia));
     }
 
     private async Task LoadFeaturedAsync()

@@ -7,74 +7,80 @@
       <Style Selector="ProgressBar:horizontal /template/ LayoutTransformControl#PART_LayoutTransformControl > TextBlock">
         <Setter Property="Foreground" Value="#000000"/>
         <Setter Property="FontWeight" Value="Bold"/>
-      </Style>  
+      </Style>
+      <Style Selector="Button.CarouselNavButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="BorderBrush" Value="#815ac7"/>
+      </Style>
+      <Style Selector="Button#MoreInfoButton">
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+      </Style>
+      <Style Selector="Button#MoreInfoButton:pointerover">
+        <Setter Property="Background" Value="#50815ac7"/>
+      </Style>
     </UserControl.Styles>
 
-    <Grid x:Name="PanelRoot">
-      <Border
-        x:Name="PanelBackgroundBorder" ZIndex="1"
-        Width ="{Binding Bounds.Width,  ElementName=PanelContent}"
-        Height="{Binding Bounds.Height, ElementName=PanelContent}"
-      >
-        <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill" Opacity="0.5">
-          <Image.Effect>
-            <BlurEffect Radius="75" />
-          </Image.Effect>
-        </Image>
-      </Border>
-
-      <Border x:Name="PanelContent"
-        BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2"
-        Padding="20" ZIndex="2"
-      >
-        <Border.Background>
-          <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-            <GradientStop Color="#000000" Offset="0.25"/>
-            <GradientStop Color="#30815ac7" Offset="0.75"/>
-            <GradientStop Color="#000000" Offset="1.0"/>
-          </LinearGradientBrush>
-        </Border.Background>
-        <Grid ColumnSpacing="10" ColumnDefinitions="auto, *">
-          <Border Grid.Column="0" x:Name="SubmissionThumbnail" Width="177" Height="100" BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2">
-            <Border.Background>
-              <ImageBrush Source="../Assets/mntl_logo.png"
-                          Stretch="UniformToFill"
-                          AlignmentX="Center"
-                          AlignmentY="Top" />
-            </Border.Background>
-          </Border>
-          <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" RowSpacing="5">
-            <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="auto, auto, *" RowSpacing="3">
-              <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5">
-                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
+    <StackPanel>
+      <Grid x:Name="PanelRoot">
+        <Border
+          x:Name="PanelBackgroundBorder"
+          Width ="{Binding Bounds.Width,  ElementName=PanelContent}"
+          Height="{Binding Bounds.Height, ElementName=PanelContent}"
+        >
+          <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill" Opacity="0.5">
+            <Image.Effect>
+              <BlurEffect Radius="75" />
+            </Image.Effect>
+          </Image>
+        </Border>
+        <Border x:Name="PanelContent"
+          BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2"
+          Padding="20" ZIndex="1"
+        >
+          <Border.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+              <GradientStop Color="#000000" Offset="0.25"/>
+              <GradientStop Color="#30815ac7" Offset="0.75"/>
+              <GradientStop Color="#000000" Offset="1.0"/>
+            </LinearGradientBrush>
+          </Border.Background>
+          <Grid ColumnSpacing="10" ColumnDefinitions="auto, *">
+            <Border Grid.Column="0" x:Name="SubmissionThumbnail" Width="177" Height="100" BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2">
+              <Border.Background>
+                <ImageBrush Source="../Assets/mntl_logo.png"
+                            Stretch="UniformToFill"
+                            AlignmentX="Center"
+                            AlignmentY="Top" />
+              </Border.Background>
+            </Border>
+            <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" RowSpacing="5">
+              <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="auto, auto, *" RowSpacing="3">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5">
+                  <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                  <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Grid.Row="1" x:Name="Description" Text="{Binding Description}" FontStyle="Italic" Foreground="#AAAAAA" ClipToBounds="False" IsVisible="False"/>
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" x:Name="ProgressStats" Spacing="2" IsVisible="False">
+                  <TextBlock Text="{Binding DevelopmentState}" />
+                  <ProgressBar MinHeight="0" Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
+                    Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
+                    Foreground="#b5e61d"
+                    Background="#815ac7"
+                    CornerRadius="2"
+                    ShowProgressText="False"
+                  />
+                </StackPanel>
+              </Grid>
+              <StackPanel Grid.Column="0" Grid.Row="1" x:Name="Categories" Orientation="Horizontal" Spacing="5" IsVisible="False">
+                  <Border x:Name="SuperCategory" CornerRadius="2" BorderThickness="1" BorderBrush="#b5e61d" Padding="5" Background="#000000" IsVisible="False">
+                    <TextBlock Text="{Binding SuperCategory.Name}" />
+                  </Border>
+                  <Border x:Name="Category" CornerRadius="2" BorderThickness="1" BorderBrush="#815ac7" Padding="5" Background="#000000" IsVisible="False">
+                    <TextBlock Text="{Binding Category.Name}" />
+                  </Border>
               </StackPanel>
-
-              <TextBlock Grid.Row="1" x:Name="Description" Text="{Binding Description}" FontStyle="Italic" Foreground="#AAAAAA" ClipToBounds="False" IsVisible="False"/>
-
-              <StackPanel Grid.Row="2" VerticalAlignment="Bottom" x:Name="ProgressStats" Spacing="2" IsVisible="False">
-                <TextBlock Text="{Binding DevelopmentState}" />
-                <ProgressBar MinHeight="0" Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
-                  Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
-                  Foreground="#b5e61d"
-                  Background="#815ac7"
-                  CornerRadius="2"
-                  ShowProgressText="False"
-                />
-              </StackPanel>
-            </Grid>
-
-            <StackPanel Grid.Column="0" Grid.Row="1" x:Name="Categories" Orientation="Horizontal" Spacing="5" IsVisible="False">
-                <Border x:Name="SuperCategory" CornerRadius="2" BorderThickness="1" BorderBrush="#b5e61d" Padding="5" Background="#000000" IsVisible="False">
-                  <TextBlock Text="{Binding SuperCategory.Name}" />
-                </Border>
-                <Border x:Name="Category" CornerRadius="2" BorderThickness="1" BorderBrush="#815ac7" Padding="5" Background="#000000" IsVisible="False">
-                  <TextBlock Text="{Binding Category.Name}" />
-                </Border>
-            </StackPanel>
-
-            <Grid Grid.Column="1" Grid.Row="0">
-              <StackPanel Spacing="10" VerticalAlignment="Top" HorizontalAlignment="Right">
+              <StackPanel Grid.Column="1" Grid.Row="0" Spacing="10" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_likes.png"/>
@@ -96,10 +102,42 @@
                   </StackPanel>
                 </StackPanel>
               </StackPanel>
+              <Button x:Name="MoreInfoButton" Click="ToggleMoreInfo" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                  <TextBlock x:Name="MoreInfoText" Text="More info" />
+                  <Image x:Name="MoreInfoArrow" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None" />
+                </StackPanel>
+              </Button>
             </Grid>
           </Grid>
-        </Grid>
+        </Border>
+      </Grid>
+      <Border x:Name="MoreInfoDropdown" BorderThickness="1, 0, 1, 1" BorderBrush="#815ac7" CornerRadius="2" Padding="20" IsVisible="False">
+        <StackPanel Orientation="Horizontal">
+          <Button Classes="CarouselNavButton" Click="Previous" Padding="15" FontSize="24" CornerRadius="2, 0, 0, 2" BorderThickness="1, 1, 0, 1" Background="#000000" BorderBrush="#b5e61d">
+            <Image RenderTransform="scale(2.0) rotate(90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
+            </Image>
+          </Button>
+
+          <Border BorderThickness="1" BorderBrush="#b5e61d">
+            <Carousel x:Name="ImagesCarousel" Width="530" Height="298" WrapSelection="True">
+              <Carousel.PageTransition>
+                <CrossFade Duration="0:00:00.200" />
+              </Carousel.PageTransition>
+              <!-- <Carousel.Items>
+                  <Image Source="../Assets/mntl_home.png" />
+                  <Image Source="../Assets/mntl_discover.png" />
+                  <Image Source="../Assets/mntl_librarby.png" />
+              </Carousel.Items> -->
+            </Carousel>
+          </Border>
+
+          <Button Classes="CarouselNavButton" Click="Next" Padding="15" FontSize="24" CornerRadius="0, 2, 2, 0" BorderThickness="0, 1, 1, 1" Background="#000000" BorderBrush="#b5e61d">
+            <Image RenderTransform="scale(2.0) rotate(-90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
+            </Image>
+          </Button>
+        </StackPanel>
       </Border>
-    </Grid>
+    </StackPanel>
 
 </UserControl>

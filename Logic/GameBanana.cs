@@ -110,6 +110,9 @@ public class GBImage
   [JsonPropertyName("_sBaseUrl")]
   public required string BaseUrl { get; set; }
 
+  [JsonPropertyName("_sCaption")]
+  public string? Caption { get; set; }
+
   [JsonPropertyName("_sFile")]
   public required string File { get; set; }
 
