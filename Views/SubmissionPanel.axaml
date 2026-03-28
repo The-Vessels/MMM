@@ -11,6 +11,16 @@
       <Style Selector="Button.CarouselNavButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="BorderBrush" Value="#815ac7"/>
       </Style>
+      <Style Selector="Border#MoreInfoDropdown">
+        <Setter Property="Opacity" Value="0.0"/>
+        <Setter Property="RenderTransform" Value="translateY(-20px)" />
+        <Setter Property="Transitions">
+          <Transitions>
+              <DoubleTransition Property="Opacity" Duration="0:0:0.15" Easing="0.25, 1, 0.5, 1"/>
+              <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="0.25, 1, 0.5, 1"/>
+          </Transitions>
+        </Setter>
+      </Style>
       <Style Selector="Button#MoreInfoButton">
         <Setter Property="CornerRadius" Value="2"/>
         <Setter Property="Padding" Value="5"/>
@@ -18,6 +28,14 @@
       </Style>
       <Style Selector="Button#MoreInfoButton:pointerover">
         <Setter Property="Background" Value="#50815ac7"/>
+      </Style>
+      <Style Selector="Image#MoreInfoArrow">
+        <Setter Property="RenderTransform" Value="rotate(0deg)"/>
+        <Setter Property="Transitions">
+          <Transitions>
+              <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.25" Easing="0.25, 1, 0.5, 1"/>
+          </Transitions>
+        </Setter>
       </Style>
     </UserControl.Styles>
 
@@ -34,6 +52,7 @@
             </Image.Effect>
           </Image>
         </Border>
+
         <Border x:Name="PanelContent"
           BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2"
           Padding="20" ZIndex="1"
@@ -112,6 +131,7 @@
           </Grid>
         </Border>
       </Grid>
+
       <Border x:Name="MoreInfoDropdown" BorderThickness="1, 0, 1, 1" BorderBrush="#815ac7" CornerRadius="2" Padding="20" IsVisible="False">
         <StackPanel Orientation="Horizontal">
           <Button Classes="CarouselNavButton" Click="Previous" Padding="15" FontSize="24" CornerRadius="2, 0, 0, 2" BorderThickness="1, 1, 0, 1" Background="#000000" BorderBrush="#b5e61d">

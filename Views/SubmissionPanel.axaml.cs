@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Media.Transformation;
 
 namespace mmm;
 
@@ -22,33 +24,38 @@ public partial class SubmissionPanel : UserControl
     }
 
     bool moreInfoOpen = false;
-    public void ToggleMoreInfo(object source, RoutedEventArgs args)
+    public async void ToggleMoreInfo(object source, RoutedEventArgs args)
     {
         if (!moreInfoOpen)
         {
-            MoreInfoDropdown.IsVisible = true;
             moreInfoOpen = true;
+
+            MoreInfoDropdown.IsVisible = true;
+            MoreInfoDropdown.Opacity = 1.0;
 
             PanelContent.CornerRadius = Avalonia.CornerRadius.Parse("2, 2, 0, 0");
 
             MoreInfoText.Text = "Less info";
-            MoreInfoArrow.RenderTransform = new RotateTransform
-            {
-                Angle = 180.0
-            };
+            
+            MoreInfoArrow.RenderTransform = TransformOperations.Parse("rotate(180deg)");
+            MoreInfoDropdown.RenderTransform = TransformOperations.Parse("translateY(0px)");
         } 
         else
         {
-            MoreInfoDropdown.IsVisible = false;
             moreInfoOpen = false;
+
+            MoreInfoDropdown.Opacity = 0.0;
 
             PanelContent.CornerRadius = Avalonia.CornerRadius.Parse("2");
 
             MoreInfoText.Text = "More info";
-            MoreInfoArrow.RenderTransform = new RotateTransform
-            {
-                Angle = 0.0
-            };
+
+            MoreInfoArrow.RenderTransform = TransformOperations.Parse("rotate(0deg)");
+            MoreInfoDropdown.RenderTransform = TransformOperations.Parse("translateY(-20px)");
+
+            //NOTE: Probably should use an Animation instead of Delay
+            await Task.Delay(125);
+            MoreInfoDropdown.IsVisible = false;
         }
     }
 }
