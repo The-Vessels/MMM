@@ -94,6 +94,9 @@ public class Record
 
   [JsonPropertyName("_aSuperCategory")]
   public SuperCategory? SuperCategory { get; set; }
+
+  [JsonPropertyName("_aCredits")]
+  public List<CreditGroup>? Credits { get; set; }
 }
 
 public class PreviewMedia
@@ -160,6 +163,24 @@ public class SuperCategory
 
   [JsonPropertyName("_sModelName")]
   public required string ModelName { get; set; }
+}
+
+public class CreditGroup
+{
+  [JsonPropertyName("_sGroupName")]
+  public required string GroupName { get; set; }
+
+  [JsonPropertyName("_aAuthors")]
+  public required List<Author> Authors { get; set; }
+}
+
+public class Author
+{
+  [JsonPropertyName("_sRole")]
+  public string? Role { get; set; }
+
+  [JsonPropertyName("_sName")]
+  public required string Name { get; set; }
 }
 
 class GameBanana
