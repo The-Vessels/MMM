@@ -43,8 +43,8 @@
       <Grid x:Name="PanelRoot">
         <Border
           x:Name="PanelBackgroundBorder"
-          Width ="{Binding Bounds.Width,  ElementName=PanelContent}"
-          Height="{Binding Bounds.Height, ElementName=PanelContent}"
+          Width ="{Binding Bounds.Width,  ElementName=PanelContent, Mode=OneWay}"
+          Height="{Binding Bounds.Height, ElementName=PanelContent, Mode=OneWay}"
         >
           <Image x:Name="PanelBackgroundImage" Stretch="UniformToFill" Opacity="0.5">
             <Image.Effect>
@@ -76,14 +76,14 @@
             <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" RowSpacing="5">
               <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="auto, auto, *" RowSpacing="3">
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5">
-                  <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                  <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}'}" VerticalAlignment="Center"/>
+                  <TextBlock Text="{Binding Name, Mode=OneWay}" FontWeight="Bold" FontSize="16"/>
+                  <TextBlock Text="{Binding Submitter.Name, StringFormat='by {0}', Mode=OneWay}" VerticalAlignment="Center"/>
                 </StackPanel>
-                <TextBlock Grid.Row="1" x:Name="Description" Text="{Binding Description}" FontStyle="Italic" Foreground="#AAAAAA" ClipToBounds="False" IsVisible="False"/>
+                <TextBlock Grid.Row="1" x:Name="Description" Text="{Binding Description, Mode=OneWay}" FontStyle="Italic" Foreground="#AAAAAA" ClipToBounds="False" IsVisible="False"/>
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" x:Name="ProgressStats" Spacing="2" IsVisible="False">
-                  <TextBlock Text="{Binding DevelopmentState}" />
+                  <TextBlock Text="{Binding DevelopmentState, Mode=OneWay}" />
                   <ProgressBar MinHeight="0" Height="10" Width="160" HorizontalAlignment="Left" x:Name="CompletionBar"
-                    Minimum="0" Maximum="100" Value="{Binding CompletionPercentage}"
+                    Minimum="0" Maximum="100" Value="{Binding CompletionPercentage, Mode=OneWay}"
                     Foreground="#b5e61d"
                     Background="#815ac7"
                     CornerRadius="2"
@@ -93,31 +93,31 @@
               </Grid>
               <StackPanel Grid.Column="0" Grid.Row="1" x:Name="Categories" Orientation="Horizontal" Spacing="5" IsVisible="False">
                   <Border x:Name="SuperCategory" CornerRadius="2" BorderThickness="1" BorderBrush="#b5e61d" Padding="5" Background="#000000" IsVisible="False">
-                    <TextBlock Text="{Binding SuperCategory.Name}" />
+                    <TextBlock Text="{Binding SuperCategory.Name, Mode=OneWay}" />
                   </Border>
                   <Border x:Name="Category" CornerRadius="2" BorderThickness="1" BorderBrush="#815ac7" Padding="5" Background="#000000" IsVisible="False">
-                    <TextBlock Text="{Binding Category.Name}" />
+                    <TextBlock Text="{Binding Category.Name, Mode=OneWay}" />
                   </Border>
               </StackPanel>
               <StackPanel Grid.Column="1" Grid.Row="0" Spacing="10" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_likes.png"/>
-                    <TextBlock Text="{Binding LikeCount}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding LikeCount, Mode=OneWay}" VerticalAlignment="Center" />
                   </StackPanel>
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_views.png"/>
-                    <TextBlock Text="{Binding ViewCount}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding ViewCount, Mode=OneWay}" VerticalAlignment="Center" />
                   </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_downloads.png"/>
-                    <TextBlock Text="{Binding DownloadCount}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding DownloadCount, Mode=OneWay}" VerticalAlignment="Center" />
                   </StackPanel>
                   <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="../Assets/mntl_posts.png"/>
-                    <TextBlock Text="{Binding PostCount}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding PostCount, Mode=OneWay}" VerticalAlignment="Center" />
                   </StackPanel>
                 </StackPanel>
               </StackPanel>
@@ -161,12 +161,12 @@
             <Border Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2">
               <StackPanel Spacing="5">
                 <TextBlock Text="Submitter" FontWeight="Bold" FontSize="14"/>
-                <TextBlock Text="{Binding Submitter.Name}" />
+                <TextBlock Text="{Binding Submitter.Name, Mode=OneWay}" />
               </StackPanel>
             </Border>
 
             <Border x:Name="SubmissionCredits" Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2" IsVisible="False">
-              <ItemsControl ItemsSource="{Binding Credits}">
+              <ItemsControl ItemsSource="{Binding Credits, Mode=OneWay}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <StackPanel Spacing="10" />
@@ -175,8 +175,8 @@
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
                     <StackPanel Spacing="5">
-                      <TextBlock Text="{Binding GroupName}" FontWeight="Bold" FontSize="14"/>
-                      <ItemsControl ItemsSource="{Binding Authors}" x:Name="SubmissionCredits">
+                      <TextBlock Text="{Binding GroupName, Mode=OneWay}" FontWeight="Bold" FontSize="14"/>
+                      <ItemsControl ItemsSource="{Binding Authors, Mode=OneWay}" x:Name="SubmissionCredits">
                         <ItemsControl.ItemsPanel>
                           <ItemsPanelTemplate>
                             <StackPanel Spacing="2"/>
@@ -184,7 +184,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                           <DataTemplate>
-                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Name, Mode=OneWay}" />
                           </DataTemplate>
                         </ItemsControl.ItemTemplate>
                       </ItemsControl>
