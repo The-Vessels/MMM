@@ -101,6 +101,11 @@ public partial class DiscoverView : UserControl
         {
             submissionPanel.Description.IsVisible = true;
         }
+
+        if (remainingData.Credits?.Count > 0)
+        {
+            submissionPanel.SubmissionCredits.IsVisible = true;
+        }
     }
 
     private async Task AddSubmissionPanel(Record record)

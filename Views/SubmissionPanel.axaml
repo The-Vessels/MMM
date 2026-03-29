@@ -165,8 +165,8 @@
               </StackPanel>
             </Border>
 
-            <Border Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2">
-              <ItemsControl ItemsSource="{Binding Credits}" x:Name="SubmissionCredits">
+            <Border x:Name="SubmissionCredits" Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2" IsVisible="False">
+              <ItemsControl ItemsSource="{Binding Credits}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <StackPanel Spacing="10" />
