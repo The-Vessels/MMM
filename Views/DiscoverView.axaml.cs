@@ -20,7 +20,7 @@ public partial class DiscoverView : UserControl
 
     private async Task AddSubmissionPanelThumbnail(SubmissionPanel submissionPanel, Uri thumbnailUrl)
     {
-        var thumbnailBitmap = await ImageHelper.LoadFromWeb(thumbnailUrl);
+        var thumbnailBitmap = await GameBanana.DownloadImage(thumbnailUrl);
 
         submissionPanel.SubmissionThumbnail.Background = new ImageBrush
         {

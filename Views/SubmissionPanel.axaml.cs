@@ -79,7 +79,7 @@ public partial class SubmissionPanel : UserControl
     public async Task AddCarouselImage(GBImage image)
     {
         var imageUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(image, GameBanana.ImageSizes.Size530));
-        var imageBitmap = await ImageHelper.LoadFromWeb(imageUrl);
+        var imageBitmap = await GameBanana.DownloadImage(imageUrl);
 
 
         var carouselImage = new Image
