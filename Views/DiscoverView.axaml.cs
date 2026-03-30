@@ -33,52 +33,6 @@ public partial class DiscoverView : UserControl
         submissionPanel.PanelBackgroundImage.Source = thumbnailBitmap;
     }
 
-    private async Task AddSubmissionPanelCarouselImages(SubmissionPanel submissionPanel, PreviewMedia previewMedia)
-    {
-        foreach (GBImage image in previewMedia.Images)
-        {
-            var imageUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(image, GameBanana.ImageSizes.Size530));
-            var imageBitmap = await ImageHelper.LoadFromWeb(imageUrl);
-
-
-            var carouselImage = new Image
-            {
-                Source = imageBitmap
-            };
-
-            var carouselCaption = new TextBlock
-            {
-                IsVisible = false
-            };
-            if (image.Caption != null)
-            {
-                carouselCaption = new TextBlock
-                {
-                    IsVisible = true,
-                    Text = image.Caption,
-                    TextAlignment = TextAlignment.Center,
-                    VerticalAlignment = Avalonia.Layout.VerticalAlignment.Bottom,
-                    Padding = Thickness.Parse("4"),
-                    Background = new SolidColorBrush
-                    {
-                        Color = Color.FromArgb(175, 0, 0, 0)
-                    }
-                };
-            };
-
-            submissionPanel.ImagesCarousel.Items.Add(
-                new Grid
-                {
-                    Children =
-                    {
-                        carouselImage,
-                        carouselCaption
-                    }
-                }
-            );
-        }
-    }
-
     private async Task AddRemainingSubmissionInfo(SubmissionPanel submissionPanel, Record record)
     {
         Record remainingData = await GameBanana.GetRecordByModelNameAndRow(record.ModelName, record.Row);
@@ -139,7 +93,8 @@ public partial class DiscoverView : UserControl
         // Haven't found a way to get all the info we need from one API call so uhm we have to do this
         Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
 
-        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelCarouselImages(submissionPanel, record.PreviewMedia));
+        /* Dispatcher.UIThread.Post(async () => await AddSubmissionPanelCarouselImages(submissionPanel, record.PreviewMedia)); */
+        submissionPanel.carouselImages = record.PreviewMedia;
     }
 
     private async Task LoadFeaturedAsync()
