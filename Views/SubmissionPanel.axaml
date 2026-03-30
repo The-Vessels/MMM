@@ -67,10 +67,10 @@
           <Grid ColumnSpacing="10" ColumnDefinitions="auto, *">
             <Border Grid.Column="0" x:Name="SubmissionThumbnail" Width="177" Height="100" BorderThickness="1" BorderBrush="#b5e61d" CornerRadius="2">
               <Border.Background>
-m                <!-- <ImageBrush Source="../Assets/mntl_logo.png"
+                <ImageBrush Source="../Assets/mntl_logo.png"
                             Stretch="UniformToFill"
                             AlignmentX="Center"
-                            AlignmentY="Top" /> -->
+                            AlignmentY="Top" />
               </Border.Background>
             </Border>
             <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" RowSpacing="5">
