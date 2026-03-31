@@ -156,39 +156,39 @@
             <HyperlinkButton NavigateUri="{Binding ProfileUrl}" Content="View on GameBanana" />
 
             <Border Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2">
-              <StackPanel Spacing="5">
-                <TextBlock Text="Submitter" FontWeight="Bold" FontSize="14"/>
-                <TextBlock Text="{Binding Submitter.Name, Mode=OneWay}" />
-              </StackPanel>
-            </Border>
+              <StackPanel Spacing="10">
+                <ItemsControl x:Name="SubmissionCredits" ItemsSource="{Binding Credits, Mode=OneWay}" IsVisible="False">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Spacing="10" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <StackPanel Spacing="5">
+                        <TextBlock Text="{Binding GroupName, Mode=OneWay}" FontWeight="Bold" FontSize="14"/>
+                        <ItemsControl ItemsSource="{Binding Authors, Mode=OneWay}" x:Name="SubmissionCredits">
+                          <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                              <StackPanel Spacing="2"/>
+                            </ItemsPanelTemplate>
+                          </ItemsControl.ItemsPanel>
+                          <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                              <TextBlock Text="{Binding Name, Mode=OneWay}" />
+                            </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                      </StackPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-            <Border x:Name="SubmissionCredits" Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2" IsVisible="False">
-              <ItemsControl ItemsSource="{Binding Credits, Mode=OneWay}">
-                <ItemsControl.ItemsPanel>
-                  <ItemsPanelTemplate>
-                    <StackPanel Spacing="10" />
-                  </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                  <DataTemplate>
-                    <StackPanel Spacing="5">
-                      <TextBlock Text="{Binding GroupName, Mode=OneWay}" FontWeight="Bold" FontSize="14"/>
-                      <ItemsControl ItemsSource="{Binding Authors, Mode=OneWay}" x:Name="SubmissionCredits">
-                        <ItemsControl.ItemsPanel>
-                          <ItemsPanelTemplate>
-                            <StackPanel Spacing="2"/>
-                          </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                          <DataTemplate>
-                            <TextBlock Text="{Binding Name, Mode=OneWay}" />
-                          </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                      </ItemsControl>
-                    </StackPanel>
-                  </DataTemplate>
-                </ItemsControl.ItemTemplate>
-              </ItemsControl>
+                <StackPanel Spacing="5">
+                  <TextBlock Text="Submitter" FontWeight="Bold" FontSize="14"/>
+                  <TextBlock Text="{Binding Submitter.Name, Mode=OneWay}" />
+                </StackPanel>
+              </StackPanel>
             </Border>
 
           </StackPanel>
