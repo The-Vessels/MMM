@@ -144,11 +144,6 @@
                 <Carousel.PageTransition>
                   <CrossFade Duration="0:00:00.200" />
                 </Carousel.PageTransition>
-                <!-- <Carousel.Items>
-                    <Image Source="../Assets/mntl_home.png" />
-                    <Image Source="../Assets/mntl_discover.png" />
-                    <Image Source="../Assets/mntl_librarby.png" />
-                </Carousel.Items> -->
               </Carousel>
             </Border>
             <Button Classes="CarouselNavButton" RenderOptions.EdgeMode="Aliased" Click="Next" Padding="10" FontSize="24" CornerRadius="0, 2, 2, 0" BorderThickness="0, 1, 1, 1" Background="#000000" BorderBrush="#b5e61d">

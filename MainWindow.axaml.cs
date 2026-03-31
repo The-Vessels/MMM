@@ -9,8 +9,6 @@ namespace mmm;
 
 public partial class MainWindow : Window
 {
-    // DateTime? lastTitleBarClick = null;
-    // const int MAX_DOUBLECLICK_MS = 20;
     private readonly SettingsService _settings;
 
     // TODO should we make this more generic?
@@ -48,9 +46,6 @@ public partial class MainWindow : Window
             Grid.SetRow(WindowBgColor, 0);
             WindowBorder.BorderThickness = Thickness.Parse("0");
         }
-
-        /* Width = Screens.All[0].Bounds.Width * 0.6;
-        Height = Screens.All[0].Bounds.Height * 0.7; */
 
         Width = 640 * 2.0;
         Height = 480 * 1.6;

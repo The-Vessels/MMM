@@ -67,13 +67,6 @@ public partial class DiscoverView : UserControl
         var submissionPanel = new SubmissionPanel();
         submissionPanel.DataContext = record;
 
-        /* foreach (string tag in record.Tags)
-        {   
-            var tagBlock = new TextBlock();
-            tagBlock.Text = tag;
-            submissionPanel.SubmissionTags.Children.Add(tagBlock);
-        } */
-
         var thumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
 
         if (record.DevelopmentStateAbbr == "indev" && record.CompletionPercentage < 100)
@@ -93,7 +86,6 @@ public partial class DiscoverView : UserControl
         // Haven't found a way to get all the info we need from one API call so uhm we have to do this
         Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
 
-        /* Dispatcher.UIThread.Post(async () => await AddSubmissionPanelCarouselImages(submissionPanel, record.PreviewMedia)); */
         submissionPanel.carouselImages = record.PreviewMedia;
     }
 
@@ -102,7 +94,6 @@ public partial class DiscoverView : UserControl
         SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions();
         foreach (Record record in jsonResponse.Records)
         {
-            // Dispatcher.UIThread.Post(async () => await AddSubmissionPanel(record));
             await AddSubmissionPanel(record);
         }
     }

@@ -2,12 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mmm="clr-namespace:mmm"
         x:Class="mmm.HomeView">
-    <!-- <StackPanel>
-        <TextBlock Text="Welcome to TestView!" />
-    </StackPanel>
-    <StackPanel>
-        <TextBlock Text="Welcome to TestView!" />
-    </StackPanel> -->
     <Border Background="#000000">
         <StackPanel>
             <Button x:Name="UsefulButton">Useful Button</Button>
