@@ -44,6 +44,9 @@ public class Record
     [JsonPropertyName("_sName")]
     public required string Name { get; set; }
 
+    [JsonPropertyName("_sProfileUrl")]
+    public required Uri ProfileUrl { get; set; }
+
     [JsonPropertyName("_tsDateAdded")]
     public long DateAdded { get; set; }
 

@@ -57,6 +57,13 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
+        <Style Selector="HyperlinkButton">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Foreground" Value="#b5e61d"/>
+        </Style>
+        <Style Selector="HyperlinkButton:visited">
+            <Setter Property="Foreground" Value="#815ac7"/>
+        </Style>
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="MainFont">avares://mmm/Assets/Fonts#Main</FontFamily>

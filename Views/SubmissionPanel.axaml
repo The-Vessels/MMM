@@ -153,6 +153,8 @@
           </StackPanel>
 
           <StackPanel Grid.Column="1" Spacing="20">
+            <HyperlinkButton NavigateUri="{Binding ProfileUrl}" Content="View on GameBanana" />
+
             <Border Padding="10" BorderThickness="1" BorderBrush="#815ac7" CornerRadius="2">
               <StackPanel Spacing="5">
                 <TextBlock Text="Submitter" FontWeight="Bold" FontSize="14"/>
