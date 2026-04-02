@@ -50,6 +50,10 @@ public partial class DiscoverView : UserControl
         Record remainingData = await GameBanana.GetRecordByModelNameAndRow(record.ModelName, record.Row);
         submissionPanel.DataContext = remainingData;
 
+        if (remainingData.DevelopmentStateAbbr == "indev" && remainingData.CompletionPercentage < 100)
+        {
+            submissionPanel.ProgressStats.IsVisible = true;
+        }
         if (remainingData.Category != null)
         {
             submissionPanel.Category.IsVisible = true;
@@ -89,11 +93,6 @@ public partial class DiscoverView : UserControl
     {
         var submissionPanel = new SubmissionPanel();
         submissionPanel.DataContext = record;
-
-        if (record.DevelopmentStateAbbr == "indev" && record.CompletionPercentage < 100)
-        {
-            submissionPanel.ProgressStats.IsVisible = true;
-        }
 
         // Haven't found a way to get all the info we need from one API call so uhm we have to do this
         Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));

@@ -70,7 +70,7 @@
                             AlignmentY="Top" />
               </Border.Background>
             </Border>
-            <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" RowSpacing="5">
+            <Grid Grid.Column="1" ColumnDefinitions="auto, *" RowDefinitions="*, auto" ColumnSpacing="10" RowSpacing="5">
               <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="auto, auto, *" RowSpacing="3">
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5">
                   <TextBlock Text="{Binding Name, Mode=OneWay}" FontWeight="Bold" FontSize="16"/>
