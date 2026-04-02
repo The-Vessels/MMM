@@ -64,6 +64,9 @@
         <Style Selector="HyperlinkButton:visited">
             <Setter Property="Foreground" Value="#815ac7"/>
         </Style>
+        <Style Selector="Button.CarouselNavButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderBrush" Value="#815ac7"/>
+        </Style>
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="MainFont">avares://mmm/Assets/Fonts#Main</FontFamily>

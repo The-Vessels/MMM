@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
@@ -12,10 +13,21 @@ namespace mmm;
 
 public partial class DiscoverView : UserControl
 {
+    public void Next(object source, RoutedEventArgs args)
+        {
+            TopSubmissionsCarousel.Next();
+        }
+
+    public void Previous(object source, RoutedEventArgs args)
+    {
+        TopSubmissionsCarousel.Previous();
+    }
+    
     public DiscoverView()
     {
         InitializeComponent();
         _ = LoadFeaturedAsync();
+        _ = LoadTopAsync();
     }
 
     private async Task AddSubmissionPanelThumbnail(SubmissionPanel submissionPanel, Uri thumbnailUrl)
@@ -62,39 +74,55 @@ public partial class DiscoverView : UserControl
         }
     }
 
-    private async Task AddSubmissionPanel(Record record)
+    private async Task<SubmissionPanel> GetSubmissionPanel(Record record)
     {
         var submissionPanel = new SubmissionPanel();
         submissionPanel.DataContext = record;
-
-        var thumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
 
         if (record.DevelopmentStateAbbr == "indev" && record.CompletionPercentage < 100)
         {
             submissionPanel.ProgressStats.IsVisible = true;
         }
 
-        if (record.HasFiles)
+        if (record.PreviewMedia != null)
         {
-            SubmissionsContainer.Children.Add(submissionPanel);
+            var thumbnailUrl = new Uri(GameBanana.GetSubmissionImageUrlByImageSize(record.PreviewMedia.Images[0], GameBanana.ImageSizes.Size220));
+
+            // This is so that image-downloading can be done asynchronously
+            // (this makes all the images get downloaded at the same time)
+            Dispatcher.UIThread.Post(async () => await AddSubmissionPanelThumbnail(submissionPanel, thumbnailUrl));
+
+            // Haven't found a way to get all the info we need from one API call so uhm we have to do this
+            Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
+
+            submissionPanel.carouselImages = record.PreviewMedia;
         }
 
-        // This is so that image-downloading can be done asynchronously
-        // (this makes all the images get downloaded at the same time)
-        Dispatcher.UIThread.Post(async () => await AddSubmissionPanelThumbnail(submissionPanel, thumbnailUrl));
-
-        // Haven't found a way to get all the info we need from one API call so uhm we have to do this
-        Dispatcher.UIThread.Post(async () => await AddRemainingSubmissionInfo(submissionPanel, record));
-
-        submissionPanel.carouselImages = record.PreviewMedia;
+        return submissionPanel;
     }
 
     private async Task LoadFeaturedAsync()
     {
-        SubmissionItem jsonResponse = await GameBanana.GetFeaturedSubmissions();
+        SubmissionsResult jsonResponse = await GameBanana.GetFeaturedSubmissions();
         foreach (Record record in jsonResponse.Records)
         {
-            await AddSubmissionPanel(record);
+            var subPanel = await GetSubmissionPanel(record);
+            if (record.HasFiles)
+            {
+                FeaturedSubmissionsContainer.Children.Add(subPanel);
+            }
+        }
+    }
+
+    private async Task LoadTopAsync()
+    {
+        List<Record> jsonResponse = await GameBanana.GetTopSubmissions();
+        foreach (Record record in jsonResponse)
+        {
+            Console.WriteLine(record);
+            var subPanel = await GetSubmissionPanel(record);
+            Console.WriteLine(subPanel);
+            TopSubmissionsCarousel.Items.Add(subPanel);
         }
     }
 }

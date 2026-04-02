@@ -17,10 +17,32 @@
     <TabControl>
         <TabItem Header="Featured">
             <Border Background="#000000">
-                <ScrollViewer>
-                    <StackPanel x:Name="SubmissionsContainer" Spacing="20" Margin="20">
+                <StackPanel Spacing="10">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Classes="CarouselNavButton" RenderOptions.EdgeMode="Aliased" Click="Previous" Padding="10" FontSize="24" CornerRadius="2, 0, 0, 2" BorderThickness="1, 1, 0, 1" Background="#000000" BorderBrush="#b5e61d">
+                            <Image Width="26" Height="14" RenderTransform="rotate(90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
+                            </Image>
+                        </Button>
+
+                        <Border BorderThickness="1" BorderBrush="#b5e61d">
+                            <Carousel x:Name="TopSubmissionsCarousel" WrapSelection="True">
+                                <!-- <Carousel.PageTransition>
+                                    <CrossFade Duration="0:00:00.200" />
+                                </Carousel.PageTransition> -->
+                            </Carousel>
+                        </Border>
+
+                        <Button Classes="CarouselNavButton" RenderOptions.EdgeMode="Aliased" Click="Next" Padding="10" FontSize="24" CornerRadius="0, 2, 2, 0" BorderThickness="0, 1, 1, 1" Background="#000000" BorderBrush="#b5e61d">
+                            <Image Width="26" Height="14" RenderTransform="rotate(-90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
+                            </Image>
+                        </Button>
                     </StackPanel>
-                </ScrollViewer>
+
+                    <ScrollViewer>
+                        <StackPanel x:Name="FeaturedSubmissionsContainer" Spacing="20" Margin="20">
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
             </Border>
         </TabItem>
     </TabControl>

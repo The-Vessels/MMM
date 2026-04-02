@@ -13,7 +13,7 @@ namespace mmm;
 
 //TODO: all of the flipping mappings or json data god save me
 // GameBanana calls IDs Rows for some reason btw
-public class SubmissionItem
+public class SubmissionsResult
 {
     [JsonPropertyName("_aMetadata")]
     public required Metadata Metadata { get; set; }
@@ -189,6 +189,8 @@ public class Author
 
 class GameBanana
 {
+    public static int DeltaruneGameID = 6755;
+
     public static HttpClient client = new()
     {
             BaseAddress = new Uri("https://gamebanana.com"),
@@ -211,13 +213,25 @@ class GameBanana
         
         return jsonResponse;
     }
-    public static async Task<SubmissionItem> GetFeaturedSubmissions()
+
+    public static async Task<SubmissionsResult> GetFeaturedSubmissions()
     {
-        using HttpResponseMessage response = await client.GetAsync("apiv11/Util/List/Featured?_idGameRow=6755&_sModelName=Mod");
+        using HttpResponseMessage response = await client.GetAsync($"apiv11/Util/List/Featured?_idGameRow={DeltaruneGameID}&_sModelName=Mod");
         
         response.EnsureSuccessStatusCode();
 
-        var jsonResponse = await response.Content.ReadFromJsonAsync<SubmissionItem>();
+        var jsonResponse = await response.Content.ReadFromJsonAsync<SubmissionsResult>();
+        /* Console.WriteLine($"{jsonResponse.GetProperty("_aRecords")}\n"); */
+        return jsonResponse;
+    }
+
+    public static async Task<List<Record>> GetTopSubmissions()
+    {
+        using HttpResponseMessage response = await client.GetAsync($"apiv11/Game/{DeltaruneGameID}/TopSubs");
+        
+        response.EnsureSuccessStatusCode();
+
+        var jsonResponse = await response.Content.ReadFromJsonAsync<List<Record>>();
         /* Console.WriteLine($"{jsonResponse.GetProperty("_aRecords")}\n"); */
         return jsonResponse;
     }
