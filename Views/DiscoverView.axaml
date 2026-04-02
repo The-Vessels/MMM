@@ -11,8 +11,8 @@
     <TabControl>
         <TabItem Header="Featured">
             <Border Background="#000000">
-                <Grid RowDefinitions="auto, *" RowSpacing="20">
-                    <Grid Grid.Row="0" ColumnDefinitions="auto, *, auto" Margin="20, 20, 20, 0">
+                <Grid RowDefinitions="auto, *">
+                    <Grid Grid.Row="0" ColumnDefinitions="auto, *, auto" Margin="20">
                         <Button Grid.Column="0" Classes="CarouselNavButton" RenderOptions.EdgeMode="Aliased" Click="Previous" Padding="10" FontSize="24" CornerRadius="2, 0, 0, 2" BorderThickness="1, 1, 0, 1" Background="#000000" BorderBrush="#b5e61d">
                             <Image Width="26" Height="14" RenderTransform="rotate(90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
                             </Image>
@@ -20,9 +20,9 @@
 
                         <Border Grid.Column="1" BorderThickness="1" BorderBrush="#b5e61d">
                             <Carousel x:Name="TopSubmissionsCarousel" WrapSelection="True">
-                                <!-- <Carousel.PageTransition>
+                                <Carousel.PageTransition>
                                     <CrossFade Duration="0:00:00.200" />
-                                </Carousel.PageTransition> -->
+                                </Carousel.PageTransition>
                             </Carousel>
                         </Border>
 
@@ -32,10 +32,12 @@
                         </Button>
                     </Grid>
 
-                    <ScrollViewer Grid.Row="1">
-                        <StackPanel x:Name="FeaturedSubmissionsContainer" Spacing="20" Margin="20, 0, 0, 0">
-                        </StackPanel>
-                    </ScrollViewer>
+                    <Border Grid.Row="1" BorderThickness="0, 1, 0, 0" BorderBrush="#b5e61d">
+                        <ScrollViewer Grid.Row="1">
+                            <StackPanel x:Name="FeaturedSubmissionsContainer" Spacing="20" Margin="20, 0, 0, 20">
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
                 </Grid>
             </Border>
         </TabItem>
