@@ -17,8 +17,8 @@
     <TabControl>
         <TabItem Header="Featured">
             <Border Background="#000000">
-                <StackPanel Spacing="20" Margin="20">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid RowDefinitions="auto, *" RowSpacing="20">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
                         <Button Classes="CarouselNavButton" RenderOptions.EdgeMode="Aliased" Click="Previous" Padding="10" FontSize="24" CornerRadius="2, 0, 0, 2" BorderThickness="1, 1, 0, 1" Background="#000000" BorderBrush="#b5e61d">
                             <Image Width="26" Height="14" RenderTransform="rotate(90deg)" Source="../Assets/mntl_arrow.png" RenderOptions.BitmapInterpolationMode="None">
                             </Image>
@@ -38,11 +38,11 @@
                         </Button>
                     </StackPanel>
 
-                    <ScrollViewer>
-                        <StackPanel x:Name="FeaturedSubmissionsContainer" Spacing="20">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="FeaturedSubmissionsContainer" Spacing="20" Margin="20, 0, 0, 0">
                         </StackPanel>
                     </ScrollViewer>
-                </StackPanel>
+                </Grid>
             </Border>
         </TabItem>
     </TabControl>
