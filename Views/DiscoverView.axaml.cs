@@ -51,32 +51,14 @@ public partial class DiscoverView : UserControl
         Record remainingData = await GameBanana.GetRecordByModelNameAndRow(record.ModelName, record.Row);
         submissionPanel.DataContext = remainingData;
 
-        if (remainingData.DevelopmentStateAbbr == "indev" && remainingData.CompletionPercentage < 100)
-        {
-            submissionPanel.ProgressStats.IsVisible = true;
-        }
-        if (remainingData.Category != null)
-        {
-            submissionPanel.Category.IsVisible = true;
-        }
-        if (remainingData.SuperCategory != null)
-        {
-            submissionPanel.SuperCategory.IsVisible = true;
-        }
-        if (submissionPanel.Category.IsVisible || submissionPanel.SuperCategory.IsVisible)
-        {
-            submissionPanel.Categories.IsVisible = true;
-        }
-        
-        if (remainingData.Description != null)
-        {
-            submissionPanel.Description.IsVisible = true;
-        }
+        submissionPanel.ProgressStats.IsVisible = remainingData.DevelopmentStateAbbr == "indev" && remainingData.CompletionPercentage < 100;
 
-        if (remainingData.Credits?.Count > 0)
-        {
-            submissionPanel.SubmissionCredits.IsVisible = true;
-        }
+        submissionPanel.Categories.IsVisible = submissionPanel.Category.IsVisible || submissionPanel.SuperCategory.IsVisible;
+        submissionPanel.SuperCategory.IsVisible = remainingData.SuperCategory != null;
+        submissionPanel.Category.IsVisible = remainingData.Category != null;
+        
+        submissionPanel.Description.IsVisible = remainingData.Description != null;
+        submissionPanel.SubmissionCredits.IsVisible = remainingData.Credits?.Count > 0;
 
         if (remainingData.PreviewMedia != null)
         {
