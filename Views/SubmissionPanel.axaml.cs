@@ -12,6 +12,7 @@ namespace mmm;
 public partial class SubmissionPanel : UserControl
 {
     public PreviewMedia? carouselImages;
+    
     public SubmissionPanel()
     {
         InitializeComponent();

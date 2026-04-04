@@ -14,9 +14,9 @@ namespace mmm;
 public partial class DiscoverView : UserControl
 {
     public void Next(object source, RoutedEventArgs args)
-        {
-            TopSubmissionsCarousel.Next();
-        }
+    {
+        TopSubmissionsCarousel.Next();
+    }
 
     public void Previous(object source, RoutedEventArgs args)
     {
@@ -26,6 +26,7 @@ public partial class DiscoverView : UserControl
     public DiscoverView()
     {
         InitializeComponent();
+
         _ = LoadFeaturedAsync();
         _ = LoadTopAsync();
     }
@@ -119,7 +120,12 @@ public partial class DiscoverView : UserControl
         foreach (Record record in jsonResponse)
         {
             var subPanel = await GetSubmissionPanel(record);
-            TopSubmissionsCarousel.Items.Add(subPanel);
+
+            //TODO: someone please help me figure out how to make topsubs without files not get added
+            if (record.ModelName == "Mod" || record.ModelName == "Wip")
+            {
+                TopSubmissionsCarousel.Items.Add(subPanel);
+            }
         }
     }
 }

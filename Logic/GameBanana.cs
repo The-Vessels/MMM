@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -89,6 +90,9 @@ public class Record
 
     [JsonPropertyName("_nDownloadCount")]
     public int DownloadCount { get; set; }
+
+    [JsonPropertyName("_aFiles")]
+    public List<GBFile>? Files { get; set; }
 
     [JsonPropertyName("_sDescription")]
     public string? Description { get; set; }
@@ -185,6 +189,15 @@ public class Author
 
     [JsonPropertyName("_sName")]
     public required string Name { get; set; }
+}
+
+public class GBFile
+{
+    [JsonPropertyName("_sFile")]
+    public required string FileName { get; set; }
+
+    [JsonPropertyName("_sDownloadUrl")]
+    public required Uri DownloadUrl { get; set; }
 }
 
 class GameBanana
