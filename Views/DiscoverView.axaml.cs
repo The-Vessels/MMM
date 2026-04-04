@@ -53,9 +53,9 @@ public partial class DiscoverView : UserControl
 
         submissionPanel.ProgressStats.IsVisible = remainingData.DevelopmentStateAbbr == "indev" && remainingData.CompletionPercentage < 100;
 
-        submissionPanel.Categories.IsVisible = submissionPanel.Category.IsVisible || submissionPanel.SuperCategory.IsVisible;
         submissionPanel.SuperCategory.IsVisible = remainingData.SuperCategory != null;
         submissionPanel.Category.IsVisible = remainingData.Category != null;
+        submissionPanel.Categories.IsVisible = submissionPanel.Category.IsVisible || submissionPanel.SuperCategory.IsVisible;
         
         submissionPanel.Description.IsVisible = remainingData.Description != null;
         submissionPanel.SubmissionCredits.IsVisible = remainingData.Credits?.Count > 0;
